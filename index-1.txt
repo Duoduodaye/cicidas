@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jardín Digital - Cicidas</title>
+  <style>
+    /* 复制主页的全部CSS样式 */
+    :root { /* ...你的CSS变量... */ }
+    .dark-theme { /* ...你的暗色变量... */ }
+    /* ...其余CSS同主页... */
+  </style>
+</head>
+<body>
+  <header>
+    <h1>¡Hola!，Me llamo Cicidas.</h1>
+    <nav>
+      <a href="index.html#about">Sobre</a>
+      <a href="index.html#projects">Pequeño pero hermoso</a>
+      <a href="index.html#contact">Contacto</a>
+    </nav>
+    <button id="theme-toggle" style="margin-left: 1rem; cursor:pointer;">🌙</button>
+  </header>
+  <div class="hero">
+    <h2>Jardín Digital</h2>
+    <p>在这个数字花园里，我像播种一样记录和整理自己的想法与成长。</p>
+  </div>
+  <main>
+    <section>
+      <h2>项目简介</h2>
+      <p>
+        Jardín Digital 是一个个人知识管理与成长记录平台。灵感来源于“数字花园”理念，用户可以像种花一样，随时添加、修剪、整理自己的想法、笔记和反思，见证它们慢慢成长和开花。
+      </p>
+    </section>
+    <section>
+      <h2>核心功能</h2>
+      <ul>
+        <li>支持富文本笔记、标签分类</li>
+        <li>时间线展示成长轨迹</li>
+        <li>自定义主题色彩</li>
+        <li>数据本地存储与导出</li>
+      </ul>
+    </section>
+    <section>
+      <h2>技术栈</h2>
+      <ul>
+        <li>React</li>
+        <li>Node.js</li>
+        <li>MongoDB</li>
+      </ul>
+    </section>
+    <section>
+      <h2>项目亮点</h2>
+      <p>
+        通过“花园”隐喻，激励用户持续记录和反思，界面温和治愈，适合长期陪伴成长。
+      </p>
+    </section>
+    <section>
+      <h2>项目链接</h2>
+      <p>
+        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">访问项目 &rarr;</a>
+      </p>
+    </section>
+  </main>
+  <footer>
+    &copy; <script>document.write(new Date().getFullYear())</script> Cicidas. 保留所有权利。
+  </footer>
+  <script>
+    // 复制主页的主题切换JS
+    const btn = document.getElementById('theme-toggle');
+    btn.onclick = function() {
+      document.body.classList.toggle('dark-theme');
+      if(document.body.classList.contains('dark-theme')){
+        localStorage.setItem('theme', 'dark');
+        btn.textContent = '☀️';
+      } else {
+        localStorage.setItem('theme', 'light');
+        btn.textContent = '🌙';
+      }
+    };
+    if(localStorage.getItem('theme') === 'dark'){
+      document.body.classList.add('dark-theme');
+      btn.textContent = '☀️';
+    }
+  </script>
+</body>
+</html>

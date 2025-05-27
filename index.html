@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Sitio Web - XXX</title>
+  <style>
+    :root {
+      --morandi1: #a3a8a6; /* Lighter grey - for borders, footer text */
+      --morandi2: #b7a69e; /* Muted Rose - for accents, maybe project titles */
+      --morandi3: #c9b7ad; /* Light beige - for card borders, subtle elements */
+      --morandi4: #b5c0b1; /* Muted Green - for nav hover, decorative lines */
+      --morandi5: #a7bfc9; /* Muted Blue - for main headings, hero bg */
+      --main-bg: #ffffff; /* White for main content background */
+      --body-bg: #f9f8f7; /* Very light beige for body background */
+      --main-text: #333333; /* Darker grey for main text for better readability */
+      --heading-text: var(--morandi5); /* Default heading color */
+    }
+.dark-theme {
+  --main-bg: #232323;
+  --body-bg: #181818;
+  --main-text: #e0e0e0;
+  --heading-text: #a7bfc9;
+  --morandi1: #444;
+  --morandi2: #b7a69e;
+  --morandi3: #333;
+  --morandi4: #b5c0b1;
+  --morandi5: #a7bfc9;
+}
+
+    body {
+      background: var(--body-bg);
+      color: var(--main-text);
+      font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      font-size: 16px; /* Base font size */
+    }
+
+    header {
+      padding: 2rem 0 1rem 0;
+      text-align: center;
+      /* border-bottom: 1px solid var(--morandi1); */ /* Can be removed or softened */
+    }
+
+    header h1 {
+      color: var(--morandi2);
+      font-size: 2.8rem;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    nav {
+      margin: 1rem 0;
+    }
+
+    nav a {
+      color: var(--morandi2);
+      text-decoration: none;
+      margin: 0 1.2rem; /* Slightly reduced margin */
+      font-weight: 500; /* Medium weight */
+      transition: color 0.2s, transform 0.2s;
+      position: relative;
+      padding-bottom: 6px; /* Space for underline effect */
+      font-size: 1.1rem;
+    }
+
+    nav a:hover {
+      color: var(--morandi4);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: var(--morandi4);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .hero {
+      background-color: var(--morandi5);
+      color: white;
+      text-align: center;
+      padding: 3.5rem 1.5rem; /* Adjusted padding */
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h2 {
+      color: white; /* Ensure hero h2 is white */
+      font-size: 2.2rem;
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.15rem; /* Adjusted size */
+      max-width: 650px;
+      margin: 0.5rem auto 0 auto;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 750px; /* Slightly wider for better use of space with cards */
+      margin: 2.5rem auto; /* Adjusted margin */
+      padding: 2rem;    /* Padding for main content area */
+      background-color: var(--main-bg);
+      box-shadow: 0 5px 25px rgba(0,0,0,0.07); /* Softer, more spread shadow */
+      border-radius: 10px; /* Slightly larger radius */
+    }
+
+    section {
+      margin-bottom: 3rem; /* Increased space between sections */
+      padding: 2rem 0;
+    }
+
+    section:not(:first-of-type) {
+        border-top: 1px dashed var(--morandi1); /* Dashed line for softer separation */
+    }
+
+    /* Common styling for h2 within sections */
+    section h2 {
+      color: var(--heading-text);
+      font-size: 2rem; /* Standardized h2 size */
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 1.8rem; /* Increased space below h2 */
+      position: relative;
+      padding-bottom: 0.8rem; /* Space for decorative line */
+    }
+
+    section h2::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--morandi4);
+    }
+    
+    /* Specific h3 styling if needed, e.g., for project cards */
+    h3 {
+      color: var(--morandi2); /* Using a distinct Morandi color for H3 */
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: var(--main-text); /* Ensure paragraph text uses main text color */
+    }
+
+    ul {
+      list-style-type: none; /* Removing default bullets for project list if not using cards */
+      padding-left: 0;
+    }
+
+    /* Project Grid and Cards */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem; /* Increased gap */
+    }
+
+    .project-card {
+      background-color: #fdfdfd;
+      padding: 1.8rem; /* Increased padding */
+      border: 1px solid var(--morandi3);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px); /* Slightly more lift */
+      box-shadow: 0 7px 18px rgba(0,0,0,0.09); /* Enhanced shadow on hover */
+    }
+
+    .project-card h3 { /* Already styled above, ensure it applies or override if needed */
+      margin-top: 0;
+    }
+
+    .project-link {
+      color: var(--morandi5);
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: color 0.2s;
+    }
+    .project-link:hover {
+        color: var(--morandi2); /* Change color on hover */
+        text-decoration: underline;
+    }
+
+    /* Contact links */
+    #contact a {
+      color: var(--morandi5);
+      text-decoration: none;
+    }
+    #contact a:hover {
+      text-decoration: underline;
+      color: var(--morandi2);
+    }
+
+
+    footer {
+      text-align: center;
+      color: var(--morandi1);
+      padding: 2.5rem 0 1.5rem 0; /* Adjusted padding */
+      border-top: 1px solid var(--morandi1);
+      font-size: 0.9rem; /* Slightly smaller footer text */
+      margin-top: 3rem; /* More space above footer */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>¡Hola!，Me llamo Cicidas.</h1>
+    <nav>
+      <a href="#about">Sobre</a>
+      <a href="#projects">Pequeño pero hermoso</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+    <button id="theme-toggle" style="margin-left: 1rem; cursor:pointer;">🌚</button>
+  </header>
+
+  <div class="hero">
+    <h2>¡Bienvendios a mi espacio digital!</h2>
+    <p>Un explorador apasionado por el mundo y que se centra en las cosas pequeñas y hermosas.</p>
+    </div>
+
+  <main>
+    <section id="about">
+      <h2>Sobre mi</h2>
+      <p>Con más de 30 años, renuncié a mi trabajo sin tener otro plan y me vine a México, ¡la tierra de los tacos! Empecé a aprender español desde cero absoluto. Egresé del CEPE de la UNAM en la Ciudad de México con el nivel A5. Actualmente, mi nivel de español es B1, aunque siento que va un poco en retroceso. No tengo formación como programador(a), pero estoy aprendiendo a usar herramientas de Inteligencia Artificial (IA)</p>
+      <p>Me encanta viajar. Ya he estado en más de 25 países y espero en unos años tener la oportunidad de seguir explorando el mundo. Solo que recientemente he hecho una pausa para poder perseguir mis talentos.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Pequeños pero hermosos</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Jardín Digital</h3>
+          <p>En este mi rincón digital, siembro ideas y reflexiones como semillas, cuidándolas para verlas germinar y florecer.</p>
+          <p><strong>Áreas de Interés:</strong> React, Node.js, MongoDB</p>
+          <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">Consulte los detalles &rarr;</a>
+        </div>
+        <div class="project-card">
+          <h3>Crecimientos Lentos</h3>
+          <p>Mis objetivos de aprendizaje se centran en explorar y aprender a utilizar eficazmente Discord, GitHub, Cursor, Python y n8n.</p>
+          <p><strong>Áreas de Interés:</strong> Python (Django), PostgreSQL, Docker</p>
+          <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">Consulte los detalles &rarr;</a>
+        </div>
+        <div class="project-card">
+          <h3>Objectivos Pequeños y Hermosos</h3>
+          <p>Libros Favoritos o Sitos Favoritos</p>
+          <p><strong>Áreas de Interés:</strong> Vue.js, Firebase</p>
+          <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">Consulte los detalles &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contacto</h2>
+      <p>En caso de que mis objetivos sean de tu interés, tengas alguna intención de colaborar o desees un intercambio técnico, te invito cordialmente a ponerte en contacto conmigo：</p>
+      <p>Correo electronico：<a href="mailto:contacto@cicidas.org">contacto@cicidas.org</a></p>
+      <p>GitHub：<a href="https://github.com/duoduodaye" target="_blank" rel="noopener noreferrer">github.com/duoduodaye</a></p>
+            </section>
+  </main>
+
+  <footer>
+    &copy; <script>document.write(new Date().getFullYear())</script> XXX. 保留所有权利。
+    </footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const btn = document.getElementById('theme-toggle');
+btn.onclick = function() {
+  document.body.classList.toggle('dark-theme');
+  // 保存用户选择
+  if(document.body.classList.contains('dark-theme')){
+    localStorage.setItem('theme', 'dark');
+    btn.textContent = '🌞';
+  } else {
+    localStorage.setItem('theme', 'light');
+    btn.textContent = '🌚';
+  }
+};
+// 页面加载时自动应用
+if(localStorage.getItem('theme') === 'dark'){
+  document.body.classList.add('dark-theme');
+  btn.textContent = '🌞';
+}
+</script>
+</body>
+</html>
