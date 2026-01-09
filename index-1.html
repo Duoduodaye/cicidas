@@ -3,272 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jardín Digital - Cicidas</title>
+  <title>Jardín Digital - Cicadas</title>
   <meta name="description" content="Jardín digital donde siembro ideas y reflexiones como semillas">
   <link rel="stylesheet" href="styles.css">
   <style>
-     :root {
-      --morandi1: #a3a8a6; /* Lighter grey - for borders, footer text */
-      --morandi2: #b7a69e; /* Muted Rose - for accents, maybe project titles */
-      --morandi3: #c9b7ad; /* Light beige - for card borders, subtle elements */
-      --morandi4: #b5c0b1; /* Muted Green - for nav hover, decorative lines */
-      --morandi5: #a7bfc9; /* Muted Blue - for main headings, hero bg */
-      --main-bg: #ffffff; /* White for main content background */
-      --body-bg: #f9f8f7; /* Very light beige for body background */
-      --main-text: #333333; /* Darker grey for main text for better readability */
-      --heading-text: var(--morandi5); /* Default heading color */
-    }
-.dark-theme {
-  --main-bg: #232323;
-  --body-bg: #181818;
-  --main-text: #e0e0e0;
-  --heading-text: #a7bfc9;
-  --morandi1: #444;
-  --morandi2: #b7a69e;
-  --morandi3: #333;
-  --morandi4: #b5c0b1;
-  --morandi5: #a7bfc9;
-}
-    body {
-      background: var(--body-bg);
-      color: var(--main-text);
-      font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.7;
-      font-size: 16px; /* Base font size */
-    }
-
-    header {
-      padding: 2rem 0 1rem 0;
-      text-align: center;
-      /* border-bottom: 1px solid var(--morandi1); */ /* Can be removed or softened */
-    }
-
-    header h1 {
-      color: var(--morandi2);
-      font-size: 2.8rem;
-      margin-bottom: 0.8rem;
-      font-weight: 700;
-    }
-
-    nav {
-      margin: 1rem 0;
-    }
-
-    nav a {
-      color: var(--morandi2);
+    .article-link {
+      color: var(--morandi5);
       text-decoration: none;
-      margin: 0 1.2rem; /* Slightly reduced margin */
-      font-weight: 500; /* Medium weight */
-      transition: color 0.2s, transform 0.2s;
-      position: relative;
-      padding-bottom: 6px; /* Space for underline effect */
-      font-size: 1.1rem;
-    }
-
-    nav a:hover {
-      color: var(--morandi4);
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 50%;
-      background-color: var(--morandi4);
-      transition: width 0.3s ease, left 0.3s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-      left: 0;
-    }
-
-    .hero {
-      background-color: var(--morandi5);
-      color: white;
-      text-align: center;
-      padding: 3.5rem 1.5rem; /* Adjusted padding */
-      margin-bottom: 2.5rem;
-    }
-
-    .hero h2 {
-      color: white; /* Ensure hero h2 is white */
-      font-size: 2.2rem;
-      margin-top: 0;
-      margin-bottom: 0.8rem;
-      font-weight: 700;
-    }
-
-    .hero p {
-      font-size: 1.15rem; /* Adjusted size */
-      max-width: 650px;
-      margin: 0.5rem auto 0 auto;
-      line-height: 1.6;
-    }
-
-    main {
-      max-width: 750px; /* Slightly wider for better use of space with cards */
-      margin: 2.5rem auto; /* Adjusted margin */
-      padding: 2rem;    /* Padding for main content area */
-      background-color: var(--main-bg);
-      box-shadow: 0 5px 25px rgba(0,0,0,0.07); /* Softer, more spread shadow */
-      border-radius: 10px; /* Slightly larger radius */
-    }
-
-    section {
-      margin-bottom: 3rem; /* Increased space between sections */
-      padding: 2rem 0;
-    }
-
-    section:not(:first-of-type) {
-        border-top: 1px dashed var(--morandi1); /* Dashed line for softer separation */
-    }
-
-    /* Common styling for h2 within sections */
-    section h2 {
-      color: var(--heading-text);
-      font-size: 2rem; /* Standardized h2 size */
-      font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 1.8rem; /* Increased space below h2 */
-      position: relative;
-      padding-bottom: 0.8rem; /* Space for decorative line */
-    }
-
-    section h2::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-        height: 3px;
-        background-color: var(--morandi4);
-    }
-    
-    /* Specific h3 styling if needed, e.g., for project cards */
-    h3 {
-      color: var(--morandi2); /* Using a distinct Morandi color for H3 */
-      font-size: 1.5rem;
       font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      transition: color 0.2s ease;
+      display: block;
       margin-bottom: 0.8rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted var(--morandi3);
     }
-
-    p {
-      margin-bottom: 1.2rem;
-      color: var(--main-text); /* Ensure paragraph text uses main text color */
-    }
-
-    ul {
-      list-style-type: none; /* Removing default bullets for project list if not using cards */
-      padding-left: 0;
-    }
-
-    /* Project Grid and Cards */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem; /* Increased gap */
-    }
-
-    .project-card {
-      background-color: #fdfdfd;
-      padding: 1.8rem; /* Increased padding */
-      border: 1px solid var(--morandi3);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px); /* Slightly more lift */
-      box-shadow: 0 7px 18px rgba(0,0,0,0.09); /* Enhanced shadow on hover */
-    }
-
-    .project-card h3 { /* Already styled above, ensure it applies or override if needed */
-      margin-top: 0;
-    }
-
-    .project-link {
-      color: var(--morandi5);
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 1rem;
-      transition: color 0.2s;
-    }
-    .project-link:hover {
-        color: var(--morandi2); /* Change color on hover */
-        text-decoration: underline;
-    }
-
-    /* Contact links */
-    #contact a {
-      color: var(--morandi5);
-      text-decoration: none;
-    }
-    #contact a:hover {
-      text-decoration: underline;
+    
+    .article-link:hover {
       color: var(--morandi2);
-    }
-
-
-    .article-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    
-    .article-card {
-      background-color: var(--main-bg);
-      border: 1px solid var(--morandi3);
-      border-radius: 8px;
-      padding: 1.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    
-    .article-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      text-decoration: underline;
     }
     
     .article-date {
       color: var(--morandi1);
       font-size: 0.85rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .article-title {
-      color: var(--morandi2);
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      line-height: 1.4;
-    }
-    
-    .article-excerpt {
-      color: var(--main-text);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    
-    .read-more {
-      color: var(--morandi5);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-    
-    .read-more:hover {
-      color: var(--morandi2);
-      text-decoration: underline;
+      margin-top: 0.3rem;
     }
   </style>
 </head>
@@ -287,35 +47,29 @@
       <button id="theme-toggle">🌙</button>
     </div>
   </header>
+  
   <div class="hero">
     <h2 data-i18n="hero_title">Un jardín para sembrar ideas y reflexiones</h2>
     <p data-i18n="hero_description">En este espacio digital cultivo pensamientos, aprendizajes y experiencias, permitiendo que crezcan y florezcan con el tiempo.</p>
   </div>
+  
   <main>
     <section>
-      <h2 data-i18n="articles_section">Artículos y Reflexiones</h2>
-      <p data-i18n="articles_intro">Aquí van germinando mis pensamientos y reflexiones sobre la vida, los viajes, la tecnología y el mundo que nos rodea.</p>
+      <h2 data-i18n="features_title">Características principales</h2>
       
-      <div class="article-grid">
-        <article class="article-card">
-          <div class="article-date" data-i18n="article1_date">9 de enero, 2026</div>
-          <h3 class="article-title" data-i18n="article1_title">La Teoría del Tonto Mayor y la Supervivencia en Tiempos de Incertidumbre</h3>
-          <p class="article-excerpt" data-i18n="article1_excerpt">Una reflexión sobre el riesgo, la supervivencia y la lucidez en un mundo cada vez más incierto. ¿Cómo podemos navegar los tiempos de cambio sin quedar atrapados en el juego?</p>
-          <a href="teoria-tonto-mayor.html" class="read-more" data-i18n="read_more">Leer artículo completo →</a>
-        </article>
-        
-        <!-- Placeholder for future articles -->
-        <div class="article-card" style="opacity: 0.6; border-style: dashed;">
-          <div class="article-date" data-i18n="coming_soon">Próximamente...</div>
-          <h3 class="article-title" data-i18n="future_article">Próximo artículo</h3>
-          <p class="article-excerpt" data-i18n="future_excerpt">Nuevas semillas están germinando en este jardín digital. Pronto florecerán en nuevas reflexiones.</p>
-        </div>
+      <!-- Artículo destacado -->
+      <div style="margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--morandi3); border-radius: 8px; background-color: var(--body-bg);">
+        <a href="teoria-tonto-mayor.html" class="article-link" data-i18n="article1_title">
+          La Teoría del Tonto Mayor y la Supervivencia en Tiempos de Incertidumbre
+        </a>
+        <div class="article-date" data-i18n="article1_date">9 de enero, 2026</div>
+        <p style="font-size: 0.9rem; color: var(--main-text); margin: 0.5rem 0 0 0;" data-i18n="article1_excerpt">
+          Una reflexión sobre el riesgo, la supervivencia y la lucidez en un mundo cada vez más incierto.
+        </p>
       </div>
-    </section>
-
-    <section>
-      <h2 data-i18n="features_title">Características del Jardín</h2>
-      <ul>
+      
+      <!-- Características del jardín -->
+      <ul data-i18n-section="features">
         <li data-i18n="feature1">Reflexiones organizadas como semillas de pensamiento</li>
         <li data-i18n="feature2">Evolución de ideas a través del tiempo</li>
         <li data-i18n="feature3">Conexiones entre diferentes temas y experiencias</li>
@@ -331,10 +85,19 @@
         <li>MongoDB</li>
       </ul>
     </section>
+    
+    <section>
+      <h2 data-i18n="project_link_title">Enlace al proyecto</h2>
+      <p>
+        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer" data-i18n="view_project">Ver proyecto</a> →
+      </p>
+    </section>
   </main>
+  
   <footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> Cicidas. <span data-i18n="all_rights">Todos los derechos reservados.</span>
+    &copy; <script>document.write(new Date().getFullYear())</script> Cicadas. <span data-i18n="all_rights">Todos los derechos reservados.</span>
   </footer>
+
   <script>
 // 翻译数据
 const gardenTranslations = {
@@ -343,21 +106,17 @@ const gardenTranslations = {
     back_to_projects: "Volver a proyectos", 
     hero_title: "Un jardín para sembrar ideas y reflexiones",
     hero_description: "En este espacio digital cultivo pensamientos, aprendizajes y experiencias, permitiendo que crezcan y florezcan con el tiempo.",
-    articles_section: "Artículos y Reflexiones",
-    articles_intro: "Aquí van germinando mis pensamientos y reflexiones sobre la vida, los viajes, la tecnología y el mundo que nos rodea.",
-    article1_date: "9 de enero, 2026",
+    features_title: "Características principales",
     article1_title: "La Teoría del Tonto Mayor y la Supervivencia en Tiempos de Incertidumbre",
-    article1_excerpt: "Una reflexión sobre el riesgo, la supervivencia y la lucidez en un mundo cada vez más incierto. ¿Cómo podemos navegar los tiempos de cambio sin quedar atrapados en el juego?",
-    read_more: "Leer artículo completo →",
-    coming_soon: "Próximamente...",
-    future_article: "Próximo artículo", 
-    future_excerpt: "Nuevas semillas están germinando en este jardín digital. Pronto florecerán en nuevas reflexiones.",
-    features_title: "Características del Jardín",
+    article1_date: "9 de enero, 2026",
+    article1_excerpt: "Una reflexión sobre el riesgo, la supervivencia y la lucidez en un mundo cada vez más incierto.",
     feature1: "Reflexiones organizadas como semillas de pensamiento",
     feature2: "Evolución de ideas a través del tiempo",
     feature3: "Conexiones entre diferentes temas y experiencias",
     feature4: "Espacio para el crecimiento personal y intelectual",
     tech_title: "Tecnologías utilizadas",
+    project_link_title: "Enlace al proyecto",
+    view_project: "Ver proyecto",
     all_rights: "Todos los derechos reservados."
   },
   en: {
@@ -365,21 +124,17 @@ const gardenTranslations = {
     back_to_projects: "Back to projects",
     hero_title: "A garden to sow ideas and reflections", 
     hero_description: "In this digital space I cultivate thoughts, learnings and experiences, allowing them to grow and flourish over time.",
-    articles_section: "Articles and Reflections",
-    articles_intro: "Here my thoughts and reflections about life, travel, technology and the world around us germinate.",
-    article1_date: "January 9, 2026",
+    features_title: "Main Features",
     article1_title: "The Greater Fool Theory and Survival in Times of Uncertainty",
-    article1_excerpt: "A reflection on risk, survival and lucidity in an increasingly uncertain world. How can we navigate times of change without getting trapped in the game?",
-    read_more: "Read full article →",
-    coming_soon: "Coming soon...",
-    future_article: "Next article",
-    future_excerpt: "New seeds are germinating in this digital garden. They will soon bloom into new reflections.",
-    features_title: "Garden Features",
+    article1_date: "January 9, 2026",
+    article1_excerpt: "A reflection on risk, survival and lucidity in an increasingly uncertain world.",
     feature1: "Reflections organized as seeds of thought",
     feature2: "Evolution of ideas through time", 
     feature3: "Connections between different topics and experiences",
     feature4: "Space for personal and intellectual growth",
     tech_title: "Technologies used",
+    project_link_title: "Project link",
+    view_project: "View project",
     all_rights: "All rights reserved."
   },
   "zh-TW": {
@@ -387,21 +142,17 @@ const gardenTranslations = {
     back_to_projects: "返回專案",
     hero_title: "播種想法與思考的花園",
     hero_description: "在這個數位空間裡，我培育思想、學習和經驗，讓它們隨時間成長茁壯。",
-    articles_section: "文章與思考", 
-    articles_intro: "在這裡，我對生活、旅行、技術和我們周圍世界的思考和反思正在萌芽。",
-    article1_date: "2026年1月9日",
+    features_title: "主要特色",
     article1_title: "大傻瓜理論與不確定時代的生存之道",
-    article1_excerpt: "對風險、生存和在越來越不確定的世界中保持清醒的思考。我們如何在變化的時代中航行而不被困在遊戲中？",
-    read_more: "閱讀完整文章 →",
-    coming_soon: "即將推出...",
-    future_article: "下一篇文章",
-    future_excerpt: "新的種子正在這個數位花園中萌芽。它們很快就會綻放成新的思考。",
-    features_title: "花園特色",
+    article1_date: "2026年1月9日",
+    article1_excerpt: "對風險、生存和在越來越不確定的世界中保持清醒的思考。",
     feature1: "思考以思想種子的形式組織",
     feature2: "思想隨時間的演變",
-    feature3: "不同主題和經驗之間的聯繫", 
+    feature3: "不同主題和經驗之間的聯絡", 
     feature4: "個人和智力成長的空間",
     tech_title: "使用的技術",
+    project_link_title: "專案連結",
+    view_project: "查看專案",
     all_rights: "保留所有權利。"
   }
 };
