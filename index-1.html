@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jardín Digital - Cicidas</title>
+  <meta name="description" content="Jardín digital donde siembro ideas y reflexiones como semillas">
+  <link rel="stylesheet" href="styles.css">
   <style>
      :root {
       --morandi1: #a3a8a6; /* Lighter grey - for borders, footer text */
@@ -214,73 +216,239 @@
     }
 
 
-    footer {
-      text-align: center;
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .article-card {
+      background-color: var(--main-bg);
+      border: 1px solid var(--morandi3);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    
+    .article-date {
       color: var(--morandi1);
-      padding: 2.5rem 0 1.5rem 0; /* Adjusted padding */
-      border-top: 1px solid var(--morandi1);
-      font-size: 0.9rem; /* Slightly smaller footer text */
-      margin-top: 3rem; /* More space above footer */
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .article-title {
+      color: var(--morandi2);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+    }
+    
+    .article-excerpt {
+      color: var(--main-text);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .read-more {
+      color: var(--morandi5);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    
+    .read-more:hover {
+      color: var(--morandi2);
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Jardín Digital</h1>
+    <h1 data-i18n="garden_title">Jardín Digital</h1>
     <nav>
-      <a href="index.html#projects">Volver a proyectos</a>
+      <a href="index.html#projects" data-i18n="back_to_projects">Volver a proyectos</a>
     </nav>
-    <button id="theme-toggle" style="margin-left: 1rem; cursor:pointer;">🌙</button>
+    <div class="header-controls">
+      <div class="language-switcher">
+        <button class="lang-btn active" onclick="setLanguage('es')">ES</button>
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('zh-TW')">中文</button>
+      </div>
+      <button id="theme-toggle">🌙</button>
+    </div>
   </header>
   <div class="hero">
-    <h2>Un jardín para sembrar ideas y reflexiones</h2>
-    <p>En este espacio digital cultivo pensamientos, aprendizajes y experiencias, permitiendo que crezcan y florezcan con el tiempo.</p>
+    <h2 data-i18n="hero_title">Un jardín para sembrar ideas y reflexiones</h2>
+    <p data-i18n="hero_description">En este espacio digital cultivo pensamientos, aprendizajes y experiencias, permitiendo que crezcan y florezcan con el tiempo.</p>
   </div>
   <main>
     <section>
-      <h2>Características principales</h2>
+      <h2 data-i18n="articles_section">Artículos y Reflexiones</h2>
+      <p data-i18n="articles_intro">Aquí van germinando mis pensamientos y reflexiones sobre la vida, los viajes, la tecnología y el mundo que nos rodea.</p>
+      
+      <div class="article-grid">
+        <article class="article-card">
+          <div class="article-date" data-i18n="article1_date">9 de enero, 2026</div>
+          <h3 class="article-title" data-i18n="article1_title">La Teoría del Tonto Mayor y la Supervivencia en Tiempos de Incertidumbre</h3>
+          <p class="article-excerpt" data-i18n="article1_excerpt">Una reflexión sobre el riesgo, la supervivencia y la lucidez en un mundo cada vez más incierto. ¿Cómo podemos navegar los tiempos de cambio sin quedar atrapados en el juego?</p>
+          <a href="teoria-tonto-mayor.html" class="read-more" data-i18n="read_more">Leer artículo completo →</a>
+        </article>
+        
+        <!-- Placeholder for future articles -->
+        <div class="article-card" style="opacity: 0.6; border-style: dashed;">
+          <div class="article-date" data-i18n="coming_soon">Próximamente...</div>
+          <h3 class="article-title" data-i18n="future_article">Próximo artículo</h3>
+          <p class="article-excerpt" data-i18n="future_excerpt">Nuevas semillas están germinando en este jardín digital. Pronto florecerán en nuevas reflexiones.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-i18n="features_title">Características del Jardín</h2>
       <ul>
-        <li>Notas en formato enriquecido y organización por etiquetas</li>
-        <li>Visualización de la evolución personal en una línea de tiempo</li>
-        <li>Personalización de temas y colores</li>
-        <li>Almacenamiento local y exportación de datos</li>
+        <li data-i18n="feature1">Reflexiones organizadas como semillas de pensamiento</li>
+        <li data-i18n="feature2">Evolución de ideas a través del tiempo</li>
+        <li data-i18n="feature3">Conexiones entre diferentes temas y experiencias</li>
+        <li data-i18n="feature4">Espacio para el crecimiento personal y intelectual</li>
       </ul>
     </section>
+    
     <section>
-      <h2>Tecnologías utilizadas</h2>
+      <h2 data-i18n="tech_title">Tecnologías utilizadas</h2>
       <ul>
         <li>React</li>
         <li>Node.js</li>
         <li>MongoDB</li>
       </ul>
     </section>
-    <section>
-      <h2>Enlace al proyecto</h2>
-      <p>
-        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">Ver proyecto &rarr;</a>
-      </p>
-    </section>
   </main>
   <footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> Cicidas. Todos los derechos reservados.
+    &copy; <script>document.write(new Date().getFullYear())</script> Cicidas. <span data-i18n="all_rights">Todos los derechos reservados.</span>
   </footer>
   <script>
-    // 复制主页的主题切换JS
-    const btn = document.getElementById('theme-toggle');
-    btn.onclick = function() {
-      document.body.classList.toggle('dark-theme');
-      if(document.body.classList.contains('dark-theme')){
-        localStorage.setItem('theme', 'dark');
-        btn.textContent = '☀️';
-      } else {
-        localStorage.setItem('theme', 'light');
-        btn.textContent = '🌙';
-      }
-    };
-    if(localStorage.getItem('theme') === 'dark'){
-      document.body.classList.add('dark-theme');
-      btn.textContent = '☀️';
+// 翻译数据
+const gardenTranslations = {
+  es: {
+    garden_title: "Jardín Digital",
+    back_to_projects: "Volver a proyectos", 
+    hero_title: "Un jardín para sembrar ideas y reflexiones",
+    hero_description: "En este espacio digital cultivo pensamientos, aprendizajes y experiencias, permitiendo que crezcan y florezcan con el tiempo.",
+    articles_section: "Artículos y Reflexiones",
+    articles_intro: "Aquí van germinando mis pensamientos y reflexiones sobre la vida, los viajes, la tecnología y el mundo que nos rodea.",
+    article1_date: "9 de enero, 2026",
+    article1_title: "La Teoría del Tonto Mayor y la Supervivencia en Tiempos de Incertidumbre",
+    article1_excerpt: "Una reflexión sobre el riesgo, la supervivencia y la lucidez en un mundo cada vez más incierto. ¿Cómo podemos navegar los tiempos de cambio sin quedar atrapados en el juego?",
+    read_more: "Leer artículo completo →",
+    coming_soon: "Próximamente...",
+    future_article: "Próximo artículo", 
+    future_excerpt: "Nuevas semillas están germinando en este jardín digital. Pronto florecerán en nuevas reflexiones.",
+    features_title: "Características del Jardín",
+    feature1: "Reflexiones organizadas como semillas de pensamiento",
+    feature2: "Evolución de ideas a través del tiempo",
+    feature3: "Conexiones entre diferentes temas y experiencias",
+    feature4: "Espacio para el crecimiento personal y intelectual",
+    tech_title: "Tecnologías utilizadas",
+    all_rights: "Todos los derechos reservados."
+  },
+  en: {
+    garden_title: "Digital Garden",
+    back_to_projects: "Back to projects",
+    hero_title: "A garden to sow ideas and reflections", 
+    hero_description: "In this digital space I cultivate thoughts, learnings and experiences, allowing them to grow and flourish over time.",
+    articles_section: "Articles and Reflections",
+    articles_intro: "Here my thoughts and reflections about life, travel, technology and the world around us germinate.",
+    article1_date: "January 9, 2026",
+    article1_title: "The Greater Fool Theory and Survival in Times of Uncertainty",
+    article1_excerpt: "A reflection on risk, survival and lucidity in an increasingly uncertain world. How can we navigate times of change without getting trapped in the game?",
+    read_more: "Read full article →",
+    coming_soon: "Coming soon...",
+    future_article: "Next article",
+    future_excerpt: "New seeds are germinating in this digital garden. They will soon bloom into new reflections.",
+    features_title: "Garden Features",
+    feature1: "Reflections organized as seeds of thought",
+    feature2: "Evolution of ideas through time", 
+    feature3: "Connections between different topics and experiences",
+    feature4: "Space for personal and intellectual growth",
+    tech_title: "Technologies used",
+    all_rights: "All rights reserved."
+  },
+  "zh-TW": {
+    garden_title: "數位花園",
+    back_to_projects: "返回專案",
+    hero_title: "播種想法與思考的花園",
+    hero_description: "在這個數位空間裡，我培育思想、學習和經驗，讓它們隨時間成長茁壯。",
+    articles_section: "文章與思考", 
+    articles_intro: "在這裡，我對生活、旅行、技術和我們周圍世界的思考和反思正在萌芽。",
+    article1_date: "2026年1月9日",
+    article1_title: "大傻瓜理論與不確定時代的生存之道",
+    article1_excerpt: "對風險、生存和在越來越不確定的世界中保持清醒的思考。我們如何在變化的時代中航行而不被困在遊戲中？",
+    read_more: "閱讀完整文章 →",
+    coming_soon: "即將推出...",
+    future_article: "下一篇文章",
+    future_excerpt: "新的種子正在這個數位花園中萌芽。它們很快就會綻放成新的思考。",
+    features_title: "花園特色",
+    feature1: "思考以思想種子的形式組織",
+    feature2: "思想隨時間的演變",
+    feature3: "不同主題和經驗之間的聯繫", 
+    feature4: "個人和智力成長的空間",
+    tech_title: "使用的技術",
+    all_rights: "保留所有權利。"
+  }
+};
+
+function setLanguage(lang) {
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (gardenTranslations[lang][key]) {
+      element.textContent = gardenTranslations[lang][key];
     }
+  });
+  
+  localStorage.setItem('preferred-language', lang);
+}
+
+// 主题切换
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.onclick = function() {
+  document.body.classList.toggle('dark-theme');
+  themeBtn.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+  localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+};
+
+// 应用保存的设置
+if(localStorage.getItem('theme') === 'dark'){
+  document.body.classList.add('dark-theme');
+  themeBtn.textContent = '☀️';
+}
+
+// 应用保存的语言
+const savedLang = localStorage.getItem('preferred-language');
+if(savedLang && gardenTranslations[savedLang]) {
+  const langButtons = document.querySelectorAll('.lang-btn');
+  langButtons.forEach(btn => btn.classList.remove('active'));
+  const targetBtn = document.querySelector(`button[onclick="setLanguage('${savedLang}')"]`);
+  if (targetBtn) targetBtn.classList.add('active');
+  
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (gardenTranslations[savedLang][key]) {
+      element.textContent = gardenTranslations[savedLang][key];
+    }
+  });
+}
   </script>
 </body>
 </html>
