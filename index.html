@@ -1,313 +1,185 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Sitio Web - XXX</title>
-  <style>
-    :root {
-      --morandi1: #a3a8a6; /* Lighter grey - for borders, footer text */
-      --morandi2: #b7a69e; /* Muted Rose - for accents, maybe project titles */
-      --morandi3: #c9b7ad; /* Light beige - for card borders, subtle elements */
-      --morandi4: #b5c0b1; /* Muted Green - for nav hover, decorative lines */
-      --morandi5: #a7bfc9; /* Muted Blue - for main headings, hero bg */
-      --main-bg: #ffffff; /* White for main content background */
-      --body-bg: #f9f8f7; /* Very light beige for body background */
-      --main-text: #333333; /* Darker grey for main text for better readability */
-      --heading-text: var(--morandi5); /* Default heading color */
-    }
-.dark-theme {
-  --main-bg: #232323;
-  --body-bg: #181818;
-  --main-text: #e0e0e0;
-  --heading-text: #a7bfc9;
-  --morandi1: #444;
-  --morandi2: #b7a69e;
-  --morandi3: #333;
-  --morandi4: #b5c0b1;
-  --morandi5: #a7bfc9;
-}
-
-    body {
-      background: var(--body-bg);
-      color: var(--main-text);
-      font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.7;
-      font-size: 16px; /* Base font size */
-    }
-
-    header {
-      padding: 2rem 0 1rem 0;
-      text-align: center;
-      /* border-bottom: 1px solid var(--morandi1); */ /* Can be removed or softened */
-    }
-
-    header h1 {
-      color: var(--morandi2);
-      font-size: 2.8rem;
-      margin-bottom: 0.8rem;
-      font-weight: 700;
-    }
-
-    nav {
-      margin: 1rem 0;
-    }
-
-    nav a {
-      color: var(--morandi2);
-      text-decoration: none;
-      margin: 0 1.2rem; /* Slightly reduced margin */
-      font-weight: 500; /* Medium weight */
-      transition: color 0.2s, transform 0.2s;
-      position: relative;
-      padding-bottom: 6px; /* Space for underline effect */
-      font-size: 1.1rem;
-    }
-
-    nav a:hover {
-      color: var(--morandi4);
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 50%;
-      background-color: var(--morandi4);
-      transition: width 0.3s ease, left 0.3s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-      left: 0;
-    }
-
-    .hero {
-      background-color: var(--morandi5);
-      color: white;
-      text-align: center;
-      padding: 3.5rem 1.5rem; /* Adjusted padding */
-      margin-bottom: 2.5rem;
-    }
-
-    .hero h2 {
-      color: white; /* Ensure hero h2 is white */
-      font-size: 2.2rem;
-      margin-top: 0;
-      margin-bottom: 0.8rem;
-      font-weight: 700;
-    }
-
-    .hero p {
-      font-size: 1.15rem; /* Adjusted size */
-      max-width: 650px;
-      margin: 0.5rem auto 0 auto;
-      line-height: 1.6;
-    }
-
-    main {
-      max-width: 750px; /* Slightly wider for better use of space with cards */
-      margin: 2.5rem auto; /* Adjusted margin */
-      padding: 2rem;    /* Padding for main content area */
-      background-color: var(--main-bg);
-      box-shadow: 0 5px 25px rgba(0,0,0,0.07); /* Softer, more spread shadow */
-      border-radius: 10px; /* Slightly larger radius */
-    }
-
-    section {
-      margin-bottom: 3rem; /* Increased space between sections */
-      padding: 2rem 0;
-    }
-
-    section:not(:first-of-type) {
-        border-top: 1px dashed var(--morandi1); /* Dashed line for softer separation */
-    }
-
-    /* Common styling for h2 within sections */
-    section h2 {
-      color: var(--heading-text);
-      font-size: 2rem; /* Standardized h2 size */
-      font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 1.8rem; /* Increased space below h2 */
-      position: relative;
-      padding-bottom: 0.8rem; /* Space for decorative line */
-    }
-
-    section h2::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-        height: 3px;
-        background-color: var(--morandi4);
-    }
-    
-    /* Specific h3 styling if needed, e.g., for project cards */
-    h3 {
-      color: var(--morandi2); /* Using a distinct Morandi color for H3 */
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
-
-    p {
-      margin-bottom: 1.2rem;
-      color: var(--main-text); /* Ensure paragraph text uses main text color */
-    }
-
-    ul {
-      list-style-type: none; /* Removing default bullets for project list if not using cards */
-      padding-left: 0;
-    }
-
-    /* Project Grid and Cards */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem; /* Increased gap */
-    }
-
-    .project-card {
-      background-color: #fdfdfd;
-      padding: 1.8rem; /* Increased padding */
-      border: 1px solid var(--morandi3);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px); /* Slightly more lift */
-      box-shadow: 0 7px 18px rgba(0,0,0,0.09); /* Enhanced shadow on hover */
-    }
-
-    .project-card h3 { /* Already styled above, ensure it applies or override if needed */
-      margin-top: 0;
-    }
-
-    .project-link {
-      color: var(--morandi5);
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 1rem;
-      transition: color 0.2s;
-    }
-    .project-link:hover {
-        color: var(--morandi2); /* Change color on hover */
-        text-decoration: underline;
-    }
-
-    /* Contact links */
-    #contact a {
-      color: var(--morandi5);
-      text-decoration: none;
-    }
-    #contact a:hover {
-      text-decoration: underline;
-      color: var(--morandi2);
-    }
-
-
-    footer {
-      text-align: center;
-      color: var(--morandi1);
-      padding: 2.5rem 0 1.5rem 0; /* Adjusted padding */
-      border-top: 1px solid var(--morandi1);
-      font-size: 0.9rem; /* Slightly smaller footer text */
-      margin-top: 3rem; /* More space above footer */
-    }
-  </style>
+  <title>Mi Sitio Web - Cicidas</title>
+  <meta name="description" content="Explorador apasionado por el mundo, enfocado en las cosas pequeñas y hermosas. Desarrollador autodidacta aprendiendo IA.">
+  <meta name="keywords" content="desarrollo web, inteligencia artificial, viajes, programación, español">
+  <meta property="og:title" content="Cicidas - Explorador Digital">
+  <meta property="og:description" content="Un explorador apasionado por el mundo y que se centra en las cosas pequeñas y hermosas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cicidas.org">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <header>
-    <h1>¡Hola!，Me llamo Cicidas.</h1>
+    <h1 data-i18n="greeting">¡Hola!，Me llamo Cicidas.</h1>
     <nav>
-      <a href="#about">Sobre</a>
-      <a href="#projects">Pequeño pero hermoso</a>
-      <a href="#contact">Contacto</a>
+      <a href="#about" data-i18n="nav_about">Sobre</a>
+      <a href="#projects" data-i18n="nav_projects">Pequeño pero hermoso</a>
+      <a href="#contact" data-i18n="nav_contact">Contacto</a>
     </nav>
-    <button id="theme-toggle" style="margin-left: 1rem; cursor:pointer;">🌚</button>
+    <div class="header-controls">
+      <div class="language-switcher">
+        <button class="lang-btn active" onclick="setLanguage('es')">ES</button>
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('zh-TW')">中文</button>
+      </div>
+      <button id="theme-toggle">🌚</button>
+    </div>
   </header>
 
   <div class="hero">
-    <h2>¡Bienvendios a mi espacio digital!</h2>
-    <p>Un explorador apasionado por el mundo y que se centra en las cosas pequeñas y hermosas.</p>
+    <h2 data-i18n="hero_welcome">¡Bienvenidos a mi espacio digital!</h2>
+    <p data-i18n="hero_description">Un explorador apasionado por el mundo y que se centra en las cosas pequeñas y hermosas.</p>
     </div>
 
   <main>
     <section id="about">
-      <h2>Sobre mi</h2>
-      <p>Con más de 30 años, renuncié a mi trabajo sin tener otro plan y me vine a México, ¡la tierra de los tacos! Empecé a aprender español desde cero absoluto. Egresé del CEPE de la UNAM en la Ciudad de México con el nivel A5. Actualmente, mi nivel de español es B1, aunque siento que va un poco en retroceso. No tengo formación como programador(a), pero estoy aprendiendo a usar herramientas de Inteligencia Artificial (IA)</p>
-      <p>Me encanta viajar. Ya he estado en más de 25 países y espero en unos años tener la oportunidad de seguir explorando el mundo. Solo que recientemente he hecho una pausa para poder perseguir mis talentos.</p>
+      <h2 data-i18n="about_title">Sobre mi</h2>
+      <p data-i18n="about_text1">Con más de 30 años, renuncié a mi trabajo sin tener otro plan y me vine a México, ¡la tierra de los tacos! Empecé a aprender español desde cero absoluto. Egresé del CEPE de la UNAM en la Ciudad de México con el nivel A5. Actualmente, mi nivel de español es B1, aunque siento que va un poco en retroceso. No tengo formación como programador(a), pero estoy aprendiendo a usar herramientas de Inteligencia Artificial (IA)</p>
+      <p data-i18n="about_text2">Me encanta viajar. Ya he estado en más de 25 países y espero en unos años tener la oportunidad de seguir explorando el mundo. Solo que recientemente he hecho una pausa para poder perseguir mis talentos.</p>
     </section>
 
     <section id="projects">
-      <h2>Pequeños pero hermosos</h2>
+      <h2 data-i18n="projects_title">Pequeños pero hermosos</h2>
       <div class="project-grid">
         <div class="project-card">
-          <h3>Jardín Digital</h3>
-          <p>En este mi rincón digital, siembro ideas y reflexiones como semillas, cuidándolas para verlas germinar y florecer.</p>
-          <p><strong>Áreas de Interés:</strong> React, Node.js, MongoDB</p>
-          <a href="index-1.html" class="project-link">Consulte los detalles &rarr;</a>
+          <h3 data-i18n="project1_title">Jardín Digital</h3>
+          <p data-i18n="project1_description">En este mi rincón digital, siembro ideas y reflexiones como semillas, cuidándolas para verlas germinar y florecer.</p>
+          <p data-tech-area="React, Node.js, MongoDB"><strong>Áreas de Interés:</strong> React, Node.js, MongoDB</p>
+          <a href="index-1.html" class="project-link"><span data-i18n="project1_link">Consulte los detalles</span> &rarr;</a>
         </div>
         <div class="project-card">
-          <h3>Crecimientos Lentos</h3>
-          <p>Mis objetivos de aprendizaje se centran en explorar y aprender a utilizar eficazmente Discord, GitHub, Cursor, Python y n8n.</p>
-          <p><strong>Áreas de Interés:</strong> Python (Django), PostgreSQL, Docker</p>
-          <a href="index-2.html" class="project-link">Consulte los detalles &rarr;</a>
+          <h3 data-i18n="project2_title">Crecimientos Lentos</h3>
+          <p data-i18n="project2_description">Mis objetivos de aprendizaje se centran en explorar y aprender a utilizar eficazmente Discord, GitHub, Cursor, Python y n8n.</p>
+          <p data-tech-area="Python (Django), PostgreSQL, Docker"><strong>Áreas de Interés:</strong> Python (Django), PostgreSQL, Docker</p>
+          <a href="index-2.html" class="project-link"><span data-i18n="project2_link">Consulte los detalles</span> &rarr;</a>
         </div>
         <div class="project-card">
-          <h3>Objectivos Pequeños y Hermosos</h3>
-          <p>Libros Favoritos o Sitos Favoritos</p>
-          <p><strong>Áreas de Interés:</strong> Vue.js, Firebase</p>
-          <a href="index-3.html" class="project-link">Consulte los detalles &rarr;</a>
+          <h3 data-i18n="project3_title">Objectivos Pequeños y Hermosos</h3>
+          <p data-i18n="project3_description">Libros Favoritos o Sitos Favoritos</p>
+          <p data-tech-area="Vue.js, Firebase"><strong>Áreas de Interés:</strong> Vue.js, Firebase</p>
+          <a href="index-3.html" class="project-link"><span data-i18n="project3_link">Consulte los detalles</span> &rarr;</a>
         </div>
         <div class="project-card">
-          <h3>Noticias de IA</h3>
-          <p>Un espacio dedicado a las últimas novedades y artículos sobre Inteligencia Artificial.</p>
-          <p><strong>Áreas de Interés:</strong> Inteligencia Artificial, Tecnología, Innovación</p>
-          <a href="ai-news.html" class="project-link">Consulte los detalles &rarr;</a>
+          <h3 data-i18n="project4_title">Noticias de IA</h3>
+          <p data-i18n="project4_description">Un espacio dedicado a las últimas novedades y artículos sobre Inteligencia Artificial.</p>
+          <p data-tech-area="Inteligencia Artificial, Tecnología, Innovación"><strong>Áreas de Interés:</strong> Inteligencia Artificial, Tecnología, Innovación</p>
+          <a href="ai-news.html" class="project-link"><span data-i18n="project4_link">Consulte los detalles</span> &rarr;</a>
         </div>
       </div>
     </section>
 
     <section id="contact">
-      <h2>Contacto</h2>
-      <p>En caso de que mis objetivos sean de tu interés, tengas alguna intención de colaborar o desees un intercambio técnico, te invito cordialmente a ponerte en contacto conmigo：</p>
-      <p>Correo electronico：<a href="mailto:contacto@cicidas.org">contacto@cicidas.org</a></p>
-      <p>GitHub：<a href="https://github.com/duoduodaye" target="_blank" rel="noopener noreferrer">github.com/duoduodaye</a></p>
+      <h2 data-i18n="contact_title">Contacto</h2>
+      <p data-i18n="contact_text">En caso de que mis objetivos sean de tu interés, tengas alguna intención de colaborar o desees un intercambio técnico, te invito cordialmente a ponerte en contacto conmigo：</p>
+      <p><span data-i18n="contact_email">Correo electronico</span>：<a href="mailto:contacto@cicidas.org">contacto@cicidas.org</a></p>
+      <p><span data-i18n="contact_github">GitHub</span>：<a href="https://github.com/duoduodaye" target="_blank" rel="noopener noreferrer">github.com/duoduodaye</a></p>
             </section>
   </main>
 
   <footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> XXX. 保留所有权利。
+    &copy; <script>document.write(new Date().getFullYear())</script> Cicidas. <span data-i18n="all_rights">保留所有权利。</span>
     </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const btn = document.getElementById('theme-toggle');
-btn.onclick = function() {
-  document.body.classList.toggle('dark-theme');
-  // 保存用户选择
-  if(document.body.classList.contains('dark-theme')){
-    localStorage.setItem('theme', 'dark');
-    btn.textContent = '🌞';
-  } else {
-    localStorage.setItem('theme', 'light');
-    btn.textContent = '🌚';
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  
+  <script>
+// 简单的翻译系统
+const translations = {
+  es: {
+    greeting: "¡Hola!，Me llamo Cicidas.",
+    nav_about: "Sobre", nav_projects: "Pequeño pero hermoso", nav_contact: "Contacto",
+    hero_welcome: "¡Bienvenidos a mi espacio digital!",
+    hero_description: "Un explorador apasionado por el mundo y que se centra en las cosas pequeñas y hermosas.",
+    about_title: "Sobre mi",
+    about_text1: "Con más de 30 años, renuncié a mi trabajo sin tener otro plan y me vine a México, ¡la tierra de los tacos! Empecé a aprender español desde cero absoluto. Egresé del CEPE de la UNAM en la Ciudad de México con el nivel A5. Actualmente, mi nivel de español es B1, aunque siento que va un poco en retroceso. No tengo formación como programador(a), pero estoy aprendiendo a usar herramientas de Inteligencia Artificial (IA)",
+    about_text2: "Me encanta viajar. Ya he estado en más de 25 países y espero en unos años tener la oportunidad de seguir explorando el mundo. Solo que recientemente he hecho una pausa para poder perseguir mis talentos.",
+    projects_title: "Pequeños pero hermosos",
+    project1_title: "Jardín Digital", project1_description: "En este mi rincón digital, siembro ideas y reflexiones como semillas, cuidándolas para verlas germinar y florecer.",
+    project1_link: "Consulte los detalles",
+    project2_title: "Crecimientos Lentos", project2_description: "Mis objetivos de aprendizaje se centran en explorar y aprender a utilizar eficazmente Discord, GitHub, Cursor, Python y n8n.",
+    project3_title: "Objectivos Pequeños y Hermosos", project3_description: "Libros Favoritos o Sitos Favoritos",
+    project4_title: "Noticias de IA", project4_description: "Un espacio dedicado a las últimas novedades y artículos sobre Inteligencia Artificial.",
+    contact_title: "Contacto", contact_text: "En caso de que mis objetivos sean de tu interés, tengas alguna intención de colaborar o desees un intercambio técnico, te invito cordialmente a ponerte en contacto conmigo：",
+    contact_email: "Correo electronico", contact_github: "GitHub",
+    tech_areas: "Áreas de Interés:", all_rights: "保留所有权利。"
+  },
+  en: {
+    greeting: "Hello! I'm Cicidas.",
+    nav_about: "About", nav_projects: "Small but Beautiful", nav_contact: "Contact",
+    hero_welcome: "Welcome to my digital space!",
+    hero_description: "A passionate explorer of the world, focusing on small and beautiful things.",
+    about_title: "About me",
+    about_text1: "Over 30 years old, I quit my job without another plan and came to Mexico, the land of tacos! I started learning Spanish from absolute zero. I graduated from CEPE at UNAM in Mexico City with an A5 level. Currently, my Spanish level is B1, although I feel it's declining a bit. I don't have a background as a programmer, but I'm learning to use Artificial Intelligence (AI) tools.",
+    about_text2: "I love traveling. I've already been to more than 25 countries and hope to have the opportunity to continue exploring the world in a few years. It's just that I've recently taken a break to pursue my talents.",
+    projects_title: "Small but Beautiful",
+    project1_title: "Digital Garden", project1_description: "In this digital corner of mine, I sow ideas and reflections like seeds, nurturing them to see them germinate and flourish.",
+    project1_link: "View details",
+    project2_title: "Slow Growth", project2_description: "My learning objectives focus on exploring and learning to effectively use Discord, GitHub, Cursor, Python, and n8n.",
+    project3_title: "Small and Beautiful Goals", project3_description: "Favorite Books or Favorite Sites",
+    project4_title: "AI News", project4_description: "A space dedicated to the latest news and articles about Artificial Intelligence.",
+    contact_title: "Contact", contact_text: "If my goals are of interest to you, you have any intention to collaborate, or you wish for a technical exchange, I cordially invite you to get in touch with me:",
+    contact_email: "Email", contact_github: "GitHub",
+    tech_areas: "Areas of Interest:", all_rights: "All rights reserved."
+  },
+  "zh-TW": {
+    greeting: "你好！我是 Cicidas。",
+    nav_about: "關於", nav_projects: "小而美", nav_contact: "聯絡",
+    hero_welcome: "歡迎來到我的數位空間！",
+    hero_description: "一個熱愛世界的探索者，專注於小而美的事物。",
+    about_title: "關於我",
+    about_text1: "30多歲時，我辭掉了工作，沒有其他計劃就來到了墨西哥，這個塔可餅的故鄉！我從完全零基礎開始學習西班牙語。我從墨西哥城國立自治大學的CEPE畢業，達到A5級別。目前我的西班牙語水平是B1，雖然感覺有點退步。我沒有程式設計師的背景，但我正在學習使用人工智慧（AI）工具。",
+    about_text2: "我熱愛旅行。我已經去過25個以上的國家，希望未來幾年能有機會繼續探索世界。只是最近我暫停了旅行，專心追求我的天賦。",
+    projects_title: "小而美",
+    project1_title: "數位花園", project1_description: "在這個屬於我的數位角落，我播下想法和思考的種子，悉心照料，看著它們發芽開花。",
+    project1_link: "查看詳細",
+    project2_title: "緩慢成長", project2_description: "我的學習目標專注於探索和學習如何有效使用Discord、GitHub、Cursor、Python和n8n。",
+    project3_title: "小而美的目標", project3_description: "最愛的書籍或網站",
+    project4_title: "AI 新聞", project4_description: "專門報導人工智慧最新消息和文章的空間。",
+    contact_title: "聯絡", contact_text: "如果我的目標讓你感興趣，你有合作的意向，或者想要技術交流，誠摯邀請你與我聯絡：",
+    contact_email: "電子郵件", contact_github: "GitHub",
+    tech_areas: "興趣領域：", all_rights: "保留所有權利。"
   }
 };
-// 页面加载时自动应用
+
+function setLanguage(lang) {
+  // 更新按钮状态
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  // 翻译页面
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (translations[lang][key]) {
+      element.textContent = translations[lang][key];
+    }
+  });
+  
+  // 特殊处理技术领域标签
+  document.querySelectorAll('[data-tech-area]').forEach(element => {
+    const techText = element.getAttribute('data-tech-area');
+    element.innerHTML = `<strong>${translations[lang]['tech_areas']}</strong> ${techText}`;
+  });
+  
+  localStorage.setItem('preferred-language', lang);
+}
+
+// 主题切换
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.onclick = function() {
+  document.body.classList.toggle('dark-theme');
+  themeBtn.textContent = document.body.classList.contains('dark-theme') ? '🌞' : '🌚';
+  localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+};
+
+// 页面加载时应用保存的设置
 if(localStorage.getItem('theme') === 'dark'){
   document.body.classList.add('dark-theme');
-  btn.textContent = '🌞';
+  themeBtn.textContent = '🌞';
 }
-</script>
+  </script>
 </body>
 </html>
