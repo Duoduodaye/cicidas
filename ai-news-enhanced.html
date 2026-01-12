@@ -505,9 +505,28 @@
     &copy; <script>document.write(new Date().getFullYear())</script> Cicadas. 
     <span data-i18n="all_rights">Manteniéndote al día con la IA.</span>
     <br>
-    <small style="color: #888;">Version: 2026-01-12 08:30 (Fixed)</small>
+    <small style="color: #888;">
+      Version: 2026-01-12 08:30 (Fixed) | 
+      <span id="data-source">Loading...</span>
+    </small>
+    <script>
+      // Show data source
+      document.addEventListener('DOMContentLoaded', function() {
+        const dataSource = document.getElementById('data-source');
+        if (window.aiNewsData) {
+          dataSource.textContent = `Real-time data (${window.aiNewsData.totalArticles} articles)`;
+          dataSource.style.color = '#27ae60';
+        } else {
+          dataSource.textContent = 'Demo data';
+          dataSource.style.color = '#f39c12';
+        }
+      });
+    </script>
   </footer>
 
+  <!-- Load real AI news data -->
+  <script src="ai_news_data.js"></script>
+  
   <script>
 // 翻译系统 (从主页复制)
 const translations = {
@@ -703,9 +722,17 @@ window.addEventListener('load', function() {
     });
 
     function loadNews() {
-      currentNews = [...mockNews];
+      // Use real news data if available, fallback to mock data
+      const realNews = window.aiNewsData ? window.aiNewsData.news : mockNews;
+      currentNews = [...realNews];
       filteredNews = [...currentNews];
       renderNews();
+      
+      // Update stats with real data
+      if (window.aiNewsData) {
+        document.getElementById('total-articles').textContent = window.aiNewsData.totalArticles;
+        document.getElementById('featured-articles').textContent = window.aiNewsData.featuredCount;
+      }
     }
 
     function renderNews() {
@@ -822,7 +849,17 @@ window.addEventListener('load', function() {
     }
 
     function updateLastUpdateTime() {
-      document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+      if (window.aiNewsData && window.aiNewsData.lastUpdated) {
+        const lastUpdate = new Date(window.aiNewsData.lastUpdated);
+        document.getElementById('last-update').textContent = lastUpdate.toLocaleString('es-ES', {
+          day: '2-digit',
+          month: '2-digit', 
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+      } else {
+        document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+      }
     }
 
     function getCategoryName(category) {
