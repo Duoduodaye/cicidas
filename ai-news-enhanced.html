@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias de IA - Cicadas</title>
+  <meta name="description" content="Centro de noticias de IA con las últimas innovaciones en Inteligencia Artificial, actualizaciones diarias y análisis de tendencias.">
+  <meta name="keywords" content="inteligencia artificial, IA, noticias, OpenAI, Google, tecnología, innovación">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Enhanced styles for AI News Hub */
+    .ai-news-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 0;
+      margin-bottom: 30px;
+    }
+
+    .search-filter-container {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+      max-width: 400px;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+    }
+
+    .filter-dropdown {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+      min-width: 150px;
+      cursor: pointer;
+    }
+
+    .refresh-btn {
+      padding: 12px 20px;
+      border: 1px solid #3498db;
+      border-radius: 5px;
+      background: #3498db;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .refresh-btn:hover {
+      background: #2980b9;
+      border-color: #2980b9;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .main-news {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .news-card.featured {
+      background: #f8f9fa;
+      border-left: 4px solid #3498db;
+      color: #333;
+    }
+
+    .news-card.featured .news-meta {
+      color: #666;
+    }
+
+    .news-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .news-category {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .category-research {
+      background: #3498db;
+      color: white;
+    }
+
+    .category-industry {
+      background: #27ae60;
+      color: white;
+    }
+
+    .category-tools {
+      background: #9b59b6;
+      color: white;
+    }
+
+    .category-ethics {
+      background: #f39c12;
+      color: white;
+    }
+
+    .category-startups {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .news-title {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .news-card.featured .news-title {
+      color: #2c3e50;
+    }
+
+    .news-summary {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .news-card.featured .news-summary {
+      color: #555;
+    }
+
+    .news-meta {
+      display: flex;
+      gap: 15px;
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+
+    .news-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .news-tag {
+      background: #ecf0f1;
+      color: #34495e;
+      padding: 4px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .news-card.featured .news-tag {
+      background: #d5dbdb;
+      color: #2c3e50;
+    }
+
+    .news-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .news-source {
+      font-weight: 600;
+      color: #3498db;
+      font-size: 14px;
+    }
+
+    .news-card.featured .news-source {
+      color: #2980b9;
+    }
+
+    .read-more-btn {
+      background: #3498db;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .read-more-btn:hover {
+      background: #2980b9;
+      transform: translateX(2px);
+    }
+
+    .news-card.featured .read-more-btn {
+      background: #2980b9;
+    }
+
+    .news-card.featured .read-more-btn:hover {
+      background: #1f618d;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid #e0e0e0;
+    }
+
+    .sidebar-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .trending-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .trending-tag {
+      background: #3498db;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .trending-tag:hover {
+      background: #2980b9;
+      transform: translateY(-1px);
+    }
+
+    .quick-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    .newsletter-signup {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .email-input {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .subscribe-btn {
+      background: #3498db;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .subscribe-btn:hover {
+      background: #2980b9;
+    }
+
+    .loading-spinner {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      color: #64748b;
+    }
+
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      color: #64748b;
+    }
+
+    /* Animation for news cards */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .news-card {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .news-card:nth-child(2) { animation-delay: 0.1s; }
+    .news-card:nth-child(3) { animation-delay: 0.2s; }
+    .news-card:nth-child(4) { animation-delay: 0.3s; }
+    .news-card:nth-child(5) { animation-delay: 0.4s; }
+
+    /* Enhanced responsive design */
+    @media (max-width: 768px) {
+      .search-filter-container {
+        flex-direction: column;
+      }
+      
+      .search-box, .filter-dropdown {
+        min-width: 100%;
+      }
+      
+      .news-meta {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .news-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 data-i18n="project4_title">Noticias de IA</h1>
+    <nav>
+      <a href="index.html">← Inicio</a>
+      <a href="index.html#about" data-i18n="nav_about">Sobre</a>
+      <a href="index.html#projects" data-i18n="nav_projects">Pequeño pero hermoso</a>
+      <a href="index.html#contact" data-i18n="nav_contact">Contacto</a>
+    </nav>
+    <div class="header-controls">
+      <div class="language-switcher">
+        <button class="lang-btn active" onclick="setLanguage('es')">ES</button>
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('zh-TW')">中文</button>
+      </div>
+      <button id="theme-toggle">🌚</button>
+    </div>
+  </header>
+
+  <div class="ai-news-container">
+    <!-- Search and Filter Controls -->
+    <div class="hero">
+      <h2 data-i18n="ai_news_hero">Últimas Noticias de IA</h2>
+      <p data-i18n="ai_news_hero_desc">Mantente al día con los avances más recientes en Inteligencia Artificial</p>
+      
+      <div class="search-filter-container">
+        <input 
+          type="text" 
+          id="news-search" 
+          class="search-box" 
+          placeholder="Buscar noticias..."
+          data-i18n-placeholder="search_placeholder"
+        />
+        
+        <select id="category-filter" class="filter-dropdown">
+          <option value="all" data-i18n="filter_all">Todas las categorías</option>
+          <option value="research" data-i18n="filter_research">Investigación</option>
+          <option value="industry" data-i18n="filter_industry">Industria</option>
+          <option value="tools" data-i18n="filter_tools">Herramientas</option>
+          <option value="ethics" data-i18n="filter_ethics">Ética</option>
+          <option value="startups" data-i18n="filter_startups">Startups</option>
+        </select>
+        
+        <button id="refresh-news" class="refresh-btn" data-i18n="refresh_btn">🔄 Actualizar</button>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="news-grid">
+      <!-- Main News Area -->
+      <div class="main-news">
+        <div id="loading-spinner" class="loading-spinner">
+          <p>🔄 Cargando las últimas noticias...</p>
+        </div>
+        
+        <div id="no-results" class="no-results">
+          <p>🔍 No se encontraron noticias que coincidan con tu búsqueda</p>
+        </div>
+        
+        <div id="news-container">
+          <!-- News will be dynamically loaded here -->
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Trending Topics -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">🔥 Temas Trending</div>
+          <div class="trending-topics" id="trending-topics">
+            <!-- Trending topics will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">📊 Estadísticas</div>
+          <div class="quick-stats">
+            <div class="stat-item">
+              <span>Total de artículos</span>
+              <span id="total-articles">0</span>
+            </div>
+            <div class="stat-item">
+              <span>Artículos destacados</span>
+              <span id="featured-articles">0</span>
+            </div>
+            <div class="stat-item">
+              <span>Última actualización</span>
+              <span id="last-update">--:--</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">📧 Actualizaciones Diarias</div>
+          <p style="font-size: 14px; color: #64748b; margin-bottom: 15px;">
+            Recibe las últimas noticias de IA en tu bandeja de entrada
+          </p>
+          <div class="newsletter-signup">
+            <input type="email" class="email-input" placeholder="Tu email..." />
+            <button class="subscribe-btn">Suscribirse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; <script>document.write(new Date().getFullYear())</script> Cicadas. 
+    <span data-i18n="all_rights">Manteniéndote al día con la IA.</span>
+    <br>
+    <small style="color: #888;">
+      Version: 2026-01-12 08:30 (Fixed) | 
+      <span id="data-source">Loading...</span>
+    </small>
+    <script>
+      // Show data source
+      document.addEventListener('DOMContentLoaded', function() {
+        const dataSource = document.getElementById('data-source');
+        if (window.aiNewsData) {
+          dataSource.textContent = `Real-time data (${window.aiNewsData.totalArticles} articles)`;
+          dataSource.style.color = '#27ae60';
+        } else {
+          dataSource.textContent = 'Demo data';
+          dataSource.style.color = '#f39c12';
+        }
+      });
+    </script>
+  </footer>
+
+  <!-- Load real AI news data -->
+  <script src="ai_news_data.js"></script>
+  
+  <!-- Fallback: Embed data directly for local testing -->
+  <script>
+    if (!window.aiNewsData) {
+      // If external file fails to load, use embedded data
+      window.aiNewsData = {
+        "lastUpdated": "2026-01-12T10:32:27.620022",
+        "totalArticles": 3,
+        "featuredCount": 2,
+        "categories": ["startups", "research"],
+        "sources": ["VentureBeat", "The Verge", "The Next Web", "TechCrunch"],
+        "news": [
+          {
+            "id": "52d9eb2a",
+            "title": "Google announces a new protocol to facilitate commerce using AI agents",
+            "summary": "Google announces a new protocol to facilitate commerce using AI agents - TechCrunch",
+            "source": "TechCrunch",
+            "author": "Ivan Mehta",
+            "url": "https://techcrunch.com/2026/01/11/google-announces-a-new-protocol-to-facilitate-commerce-using-ai-agents/",
+            "publishDate": "2026-01-11",
+            "category": "research",
+            "tags": ["Google"],
+            "readTime": "3 min",
+            "featured": true,
+            "language": "multilingual"
+          },
+          {
+            "id": "c1a48296",
+            "title": "The venture firm that ate Silicon Valley just raised another 15 billion",
+            "summary": "Ben Horowitz writes that 'as the American leader in Venture Capital, the fate of new technology in the United States rests partly on our shoulders.'",
+            "source": "TechCrunch",
+            "author": "Connie Loizos",
+            "url": "https://techcrunch.com/2026/01/09/the-venture-firm-that-ate-silicon-valley/",
+            "publishDate": "2026-01-09",
+            "category": "research",
+            "tags": ["Investment", "Venture Capital"],
+            "readTime": "4 min",
+            "featured": true,
+            "language": "en"
+          },
+          {
+            "id": "cdf25c0c",
+            "title": "OpenAI is reportedly asking contractors to upload real work from past jobs",
+            "summary": "OpenAI is reportedly asking contractors to upload real work from past jobs for training data",
+            "source": "TechCrunch",
+            "author": "Anthony Ha",
+            "url": "https://techcrunch.com/2026/01/10/openai-is-reportedly-asking-contractors-to-upload-real-work-from-past-jobs/",
+            "publishDate": "2026-01-10",
+            "category": "research",
+            "tags": ["OpenAI", "Training Data"],
+            "readTime": "2 min",
+            "featured": false,
+            "language": "en"
+          }
+        ]
+      };
+    }
+  </script>
+  
+  <script>
+    // Ensure data is available after loading
+    window.addEventListener('load', function() {
+      if (window.aiNewsData) {
+        console.log('✅ Real AI news data loaded:', window.aiNewsData.totalArticles + ' articles');
+      } else {
+        console.log('⚠️ Using mock data - real data not available');
+      }
+    });
+  </script>
+  
+  <script>
+// 翻译系统 (从主页复制)
+const translations = {
+  es: {
+    project4_title: "Noticias de IA",
+    nav_about: "Sobre", 
+    nav_projects: "Pequeño pero hermoso", 
+    nav_contact: "Contacto",
+    ai_news_hero: "Últimas Noticias de IA",
+    ai_news_hero_desc: "Mantente al día con los avances más recientes en Inteligencia Artificial",
+    search_placeholder: "Buscar noticias...",
+    filter_all: "Todas las categorías",
+    filter_research: "Investigación",
+    filter_industry: "Industria", 
+    filter_tools: "Herramientas",
+    filter_ethics: "Ética",
+    filter_startups: "Startups",
+    refresh_btn: "🔄 Actualizar",
+    all_rights: "Manteniéndote al día con la IA."
+  },
+  en: {
+    project4_title: "AI News",
+    nav_about: "About", 
+    nav_projects: "Small but Beautiful", 
+    nav_contact: "Contact",
+    ai_news_hero: "Latest AI News",
+    ai_news_hero_desc: "Stay updated with the latest advances in Artificial Intelligence",
+    search_placeholder: "Search news...",
+    filter_all: "All categories",
+    filter_research: "Research",
+    filter_industry: "Industry", 
+    filter_tools: "Tools",
+    filter_ethics: "Ethics",
+    filter_startups: "Startups",
+    refresh_btn: "🔄 Refresh",
+    all_rights: "Keeping you updated with AI."
+  },
+  "zh-TW": {
+    project4_title: "AI 新聞",
+    nav_about: "關於", 
+    nav_projects: "小而美", 
+    nav_contact: "聯絡",
+    ai_news_hero: "最新 AI 新聞",
+    ai_news_hero_desc: "掌握人工智慧領域的最新發展",
+    search_placeholder: "搜尋新聞...",
+    filter_all: "所有分類",
+    filter_research: "研究",
+    filter_industry: "產業", 
+    filter_tools: "工具",
+    filter_ethics: "倫理",
+    filter_startups: "新創",
+    refresh_btn: "🔄 更新",
+    all_rights: "為您帶來 AI 最新消息。"
+  }
+};
+
+function setLanguage(lang) {
+  // 更新按钮状态
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  // 翻译页面
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (translations[lang][key]) {
+      element.textContent = translations[lang][key];
+    }
+  });
+  
+  // 翻译placeholder
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    if (translations[lang][key]) {
+      element.placeholder = translations[lang][key];
+    }
+  });
+  
+  localStorage.setItem('preferred-language', lang);
+}
+
+// 页面加载时应用保存的语言设置
+window.addEventListener('load', function() {
+  const savedLang = localStorage.getItem('preferred-language') || 'es';
+  const langBtn = document.querySelector(`[onclick="setLanguage('${savedLang}')"]`);
+  if (langBtn) {
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    langBtn.classList.add('active');
+    
+    // 应用翻译
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      if (translations[savedLang][key]) {
+        element.textContent = translations[savedLang][key];
+      }
+    });
+    
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+      const key = element.getAttribute('data-i18n-placeholder');
+      if (translations[savedLang][key]) {
+        element.placeholder = translations[savedLang][key];
+      }
+    });
+  }
+});
+  </script>
+  <script>
+    // Enhanced AI News functionality
+    let currentNews = [];
+    let filteredNews = [];
+
+    // Mock AI news data (in production, this would come from your Python script)
+    const mockNews = [
+      {
+        id: "1",
+        title: "OpenAI Anuncia GPT-5 con Capacidades Multimodales Revolucionarias",
+        summary: "OpenAI ha anunciado GPT-5 con capacidades mejoradas de razonamiento, comprensión de video e interacción en tiempo real.",
+        category: "research",
+        source: "OpenAI Blog",
+        author: "Sam Altman",
+        publishDate: new Date().toISOString().split('T')[0],
+        readTime: "5 min",
+        tags: ["GPT-5", "OpenAI", "Multimodal", "Investigación"],
+        featured: true,
+        url: "#"
+      },
+      {
+        id: "2",
+        title: "Google DeepMind Logra Avance en Descubrimiento Científico",
+        summary: "AlphaFold 3 predice exitosamente interacciones complejas de proteínas, acelerando los plazos de descubrimiento de medicamentos.",
+        category: "research",
+        source: "Nature",
+        author: "Dr. Demis Hassabis",
+        publishDate: new Date().toISOString().split('T')[0],
+        readTime: "7 min",
+        tags: ["AlphaFold", "DeepMind", "Ciencia", "Biología"],
+        featured: true,
+        url: "#"
+      },
+      {
+        id: "3",
+        title: "Microsoft Copilot Integra Razonamiento Avanzado en Office",
+        summary: "Nuevas capacidades de IA aportan razonamiento a nivel humano a las aplicaciones Excel, PowerPoint y Word.",
+        category: "industry",
+        source: "Microsoft News",
+        author: "Satya Nadella",
+        publishDate: new Date(Date.now() - 86400000).toISOString().split('T')[0],
+        readTime: "4 min",
+        tags: ["Microsoft", "Copilot", "Office", "Productividad"],
+        featured: false,
+        url: "#"
+      },
+      {
+        id: "4",
+        title: "Nuevo Modelo de IA Open Source Desafía a Gigantes Comerciales",
+        summary: "Mistral AI lanza Mistral-Large-3, igualando el rendimiento de GPT-4 mientras permanece completamente open source.",
+        category: "tools",
+        source: "TechCrunch",
+        author: "Equipo de Investigación IA",
+        publishDate: new Date(Date.now() - 172800000).toISOString().split('T')[0],
+        readTime: "6 min",
+        tags: ["Open Source", "Mistral", "LLM", "Competencia"],
+        featured: false,
+        url: "#"
+      },
+      {
+        id: "5",
+        title: "Directrices de Ética en IA Actualizadas para 2025",
+        summary: "Consorcio internacional publica directrices integrales para el desarrollo y despliegue responsable de IA.",
+        category: "ethics",
+        source: "Consorcio de Ética IA",
+        author: "Dr. Timnit Gebru",
+        publishDate: new Date(Date.now() - 259200000).toISOString().split('T')[0],
+        readTime: "8 min",
+        tags: ["Ética", "Directrices", "Responsabilidad", "Gobernanza"],
+        featured: false,
+        url: "#"
+      }
+    ];
+
+    // Trending topics
+    const trendingTopics = [
+      "GPT-5", "IA Multimodal", "Ética IA", "Open Source", "AGI",
+      "Seguridad IA", "Visión Computacional", "Lenguaje Natural", "Robótica"
+    ];
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Debug: Check if data is loaded
+      console.log('aiNewsData available:', !!window.aiNewsData);
+      if (window.aiNewsData) {
+        console.log('Data details:', window.aiNewsData.totalArticles + ' articles');
+      }
+      
+      loadNews();
+      setupEventListeners();
+      updateStats();
+      loadTrendingTopics();
+      updateLastUpdateTime();
+    });
+
+    function loadNews() {
+      // Use real news data if available, fallback to mock data
+      const realNews = window.aiNewsData ? window.aiNewsData.news : mockNews;
+      currentNews = [...realNews];
+      filteredNews = [...currentNews];
+      renderNews();
+      
+      // Update stats with real data
+      if (window.aiNewsData) {
+        document.getElementById('total-articles').textContent = window.aiNewsData.totalArticles;
+        document.getElementById('featured-articles').textContent = window.aiNewsData.featuredCount;
+      }
+    }
+
+    function renderNews() {
+      const container = document.getElementById('news-container');
+      const noResults = document.getElementById('no-results');
+      
+      if (filteredNews.length === 0) {
+        container.innerHTML = '';
+        noResults.style.display = 'block';
+        return;
+      }
+
+      noResults.style.display = 'none';
+      
+      container.innerHTML = filteredNews.map(news => `
+        <article class="news-card ${news.featured ? 'featured' : ''}">
+          <div class="news-header">
+            <span class="news-category category-${news.category}">${getCategoryName(news.category)}</span>
+            ${news.featured ? '<span style="font-size: 20px;">⭐</span>' : ''}
+          </div>
+          
+          <h3 class="news-title">${news.title}</h3>
+          <p class="news-summary">${news.summary}</p>
+          
+          <div class="news-meta">
+            <span>👤 ${news.author}</span>
+            <span>📅 ${formatDate(news.publishDate)}</span>
+            <span>⏱️ ${news.readTime}</span>
+          </div>
+          
+          <div class="news-tags">
+            ${news.tags.map(tag => `<span class="news-tag">#${tag}</span>`).join('')}
+          </div>
+          
+          <div class="news-actions">
+            <span class="news-source">${news.source}</span>
+            <a href="${news.url}" class="read-more-btn">
+              Leer más →
+            </a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function setupEventListeners() {
+      // Search functionality
+      const searchInput = document.getElementById('news-search');
+      searchInput.addEventListener('input', filterNews);
+
+      // Category filter
+      const categoryFilter = document.getElementById('category-filter');
+      categoryFilter.addEventListener('change', filterNews);
+
+      // Refresh button
+      const refreshBtn = document.getElementById('refresh-news');
+      refreshBtn.addEventListener('click', refreshNews);
+    }
+
+    function filterNews() {
+      const searchTerm = document.getElementById('news-search').value.toLowerCase();
+      const categoryFilter = document.getElementById('category-filter').value;
+
+      filteredNews = currentNews.filter(news => {
+        const matchesSearch = news.title.toLowerCase().includes(searchTerm) ||
+                            news.summary.toLowerCase().includes(searchTerm) ||
+                            news.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+        
+        const matchesCategory = categoryFilter === 'all' || news.category === categoryFilter;
+        
+        return matchesSearch && matchesCategory;
+      });
+
+      renderNews();
+      updateStats();
+    }
+
+    function refreshNews() {
+      const loadingSpinner = document.getElementById('loading-spinner');
+      const refreshBtn = document.getElementById('refresh-news');
+      
+      // Show loading state
+      loadingSpinner.style.display = 'block';
+      refreshBtn.disabled = true;
+      refreshBtn.innerHTML = '🔄 Actualizando...';
+
+      // Simulate refresh (in production, this would fetch new data)
+      setTimeout(() => {
+        loadNews();
+        loadingSpinner.style.display = 'none';
+        refreshBtn.disabled = false;
+        refreshBtn.innerHTML = '🔄 Actualizar';
+        updateLastUpdateTime();
+        
+        // Show success message
+        showToast('📰 Noticias actualizadas correctamente');
+      }, 2000);
+    }
+
+    function updateStats() {
+      document.getElementById('total-articles').textContent = filteredNews.length;
+      document.getElementById('featured-articles').textContent = filteredNews.filter(n => n.featured).length;
+    }
+
+    function loadTrendingTopics() {
+      const container = document.getElementById('trending-topics');
+      container.innerHTML = trendingTopics.map(topic => 
+        `<span class="trending-tag" onclick="searchByTopic('${topic}')">#${topic}</span>`
+      ).join('');
+    }
+
+    function searchByTopic(topic) {
+      document.getElementById('news-search').value = topic;
+      filterNews();
+    }
+
+    function updateLastUpdateTime() {
+      if (window.aiNewsData && window.aiNewsData.lastUpdated) {
+        const lastUpdate = new Date(window.aiNewsData.lastUpdated);
+        document.getElementById('last-update').textContent = lastUpdate.toLocaleString('es-ES', {
+          day: '2-digit',
+          month: '2-digit', 
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+      } else {
+        document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+      }
+    }
+
+    function getCategoryName(category) {
+      const names = {
+        research: 'Investigación',
+        industry: 'Industria',
+        tools: 'Herramientas',
+        ethics: 'Ética',
+        startups: 'Startups'
+      };
+      return names[category] || category;
+    }
+
+    function formatDate(dateString) {
+      return new Date(dateString).toLocaleDateString('es-ES');
+    }
+
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+      `;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }
+
+    // Add CSS for toast animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Theme integration
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.onclick = function() {
+      document.body.classList.toggle('dark-theme');
+      themeToggle.textContent = document.body.classList.contains('dark-theme') ? '🌞' : '🌚';
+      localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+    };
+
+    // Apply saved theme
+    if(localStorage.getItem('theme') === 'dark'){
+      document.body.classList.add('dark-theme');
+      themeToggle.textContent = '🌞';
+    }
+  </script>
+
+</body>
+</html>

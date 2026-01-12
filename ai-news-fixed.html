@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias de IA - Cicadas</title>
+  <meta name="description" content="Centro de noticias de IA con las últimas innovaciones en Inteligencia Artificial, actualizaciones diarias y análisis de tendencias.">
+  <meta name="keywords" content="inteligencia artificial, IA, noticias, OpenAI, Google, tecnología, innovación">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Enhanced styles for AI News Hub */
+    .ai-news-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 0;
+      margin-bottom: 30px;
+    }
+
+    .search-filter-container {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+      max-width: 400px;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+    }
+
+    .filter-dropdown {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+      min-width: 150px;
+      cursor: pointer;
+    }
+
+    .refresh-btn {
+      padding: 12px 20px;
+      border: 1px solid #3498db;
+      border-radius: 5px;
+      background: #3498db;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .refresh-btn:hover {
+      background: #2980b9;
+      border-color: #2980b9;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .main-news {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .news-card.featured {
+      background: #f8f9fa;
+      border-left: 4px solid #3498db;
+      color: #333;
+    }
+
+    .news-title {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .news-summary {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .news-meta {
+      display: flex;
+      gap: 15px;
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+
+    .news-category {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .category-research { background: #3498db; color: white; }
+    .category-startups { background: #e74c3c; color: white; }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid #e0e0e0;
+    }
+
+    .sidebar-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .read-more-btn {
+      background: #3498db;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .read-more-btn:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Noticias de IA</h1>
+    <nav>
+      <a href="index.html">← Inicio</a>
+      <a href="index.html#about">Sobre</a>
+      <a href="index.html#projects">Pequeño pero hermoso</a>
+      <a href="index.html#contact">Contacto</a>
+    </nav>
+  </header>
+
+  <div class="ai-news-container">
+    <!-- Search and Filter Controls -->
+    <div class="hero">
+      <h2>Últimas Noticias de IA</h2>
+      <p>Mantente al día con los avances más recientes en Inteligencia Artificial</p>
+      
+      <div class="search-filter-container">
+        <input 
+          type="text" 
+          id="news-search" 
+          class="search-box" 
+          placeholder="Buscar noticias..."
+        />
+        
+        <select id="category-filter" class="filter-dropdown">
+          <option value="all">Todas las categorías</option>
+          <option value="research">Investigación</option>
+          <option value="startups">Startups</option>
+        </select>
+        
+        <button id="refresh-news" class="refresh-btn">🔄 Actualizar</button>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="news-grid">
+      <!-- Main News Area -->
+      <div class="main-news">
+        <div id="news-container">
+          <!-- News will be loaded here -->
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Quick Stats -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">📊 Estadísticas</div>
+          <div>
+            <div>
+              <span>Total de artículos: </span>
+              <span id="total-articles">0</span>
+            </div>
+            <div>
+              <span>Artículos destacados: </span>
+              <span id="featured-articles">0</span>
+            </div>
+            <div>
+              <span>Última actualización: </span>
+              <span id="last-update">--:--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Cicadas. Manteniéndote al día con la IA.
+    <br>
+    <small style="color: #888;">
+      Version: 2026-01-12 Fixed | 
+      <span id="data-source">Real-time data (15 articles)</span>
+    </small>
+  </footer>
+
+  <script>
+    // Embed real data directly - no external files needed
+    const aiNewsData = {
+      "lastUpdated": "2026-01-12T10:56:30.536796",
+      "totalArticles": 15,
+      "featuredCount": 2,
+      "categories": ["startups", "research"],
+      "sources": ["The Next Web", "VentureBeat", "The Verge", "TechCrunch"],
+      "news": [
+        {
+          "id": "52d9eb2a",
+          "title": "Google anuncia un nuevo protocolo para facilitar el comercio usando agentes de IA",
+          "summary": "Google presenta nuevos protocolos para facilitar el comercio electrónico utilizando agentes de inteligencia artificial",
+          "source": "TechCrunch",
+          "author": "Ivan Mehta",
+          "url": "https://techcrunch.com/2026/01/11/google-announces-a-new-protocol-to-facilitate-commerce-using-ai-agents/",
+          "publishDate": "2026-01-11",
+          "category": "research",
+          "tags": ["Google", "Comercio"],
+          "readTime": "3 min",
+          "featured": true
+        },
+        {
+          "id": "c1a48296",
+          "title": "Firma de capital de riesgo de Silicon Valley recauda otros $15 mil millones",
+          "summary": "Ben Horowitz escribe que 'como líder estadounidense en Capital de Riesgo, el destino de la nueva tecnología en Estados Unidos descansa en parte en nuestros hombros.'",
+          "source": "TechCrunch",
+          "author": "Connie Loizos",
+          "url": "https://techcrunch.com/2026/01/09/the-venture-firm-that-ate-silicon-valley/",
+          "publishDate": "2026-01-09",
+          "category": "research",
+          "tags": ["Inversión", "Capital de Riesgo"],
+          "readTime": "4 min",
+          "featured": true
+        },
+        {
+          "id": "62c29ed5",
+          "title": "Las startups nucleares vuelven a estar de moda con reactores pequeños",
+          "summary": "Las startups de reactores modulares pequeños apuestan a que la fabricación en masa les ayudará a reducir costos",
+          "source": "TechCrunch",
+          "author": "Tim De Chant",
+          "url": "https://techcrunch.com/2026/01/11/nuclear-startups-are-back-in-vogue-with-small-reactors-and-big-challenges/",
+          "publishDate": "2026-01-11",
+          "category": "startups",
+          "tags": ["Nuclear", "Energía"],
+          "readTime": "3 min",
+          "featured": false
+        },
+        {
+          "id": "a98ebe71", 
+          "title": "Wing expandirá entrega con drones a otras 150 tiendas Walmart",
+          "summary": "La asociación expandirá el servicio de entrega con drones de Wing a más de 270 tiendas Walmart para 2027",
+          "source": "TechCrunch",
+          "author": "Kirsten Korosec",
+          "url": "https://techcrunch.com/2026/01/11/wing-to-expand-drone-delivery-to-another-150-walmart-stores/",
+          "publishDate": "2026-01-11",
+          "category": "research",
+          "tags": ["Drones", "Entrega"],
+          "readTime": "2 min",
+          "featured": false
+        },
+        {
+          "id": "2c00b043",
+          "title": "Cómo TiVo mató a la TV en vivo",
+          "summary": "Por un tiempo, parecía que todos tenían un TiVo. Era un elemento argumental en grandes programas de TV y tenía fanáticos de Hollywood de primera línea",
+          "source": "The Verge",
+          "author": "David Pierce",
+          "url": "https://www.theverge.com/podcast/860321/tivo-tv-streaming-version-history",
+          "publishDate": "2026-01-11",
+          "category": "research",
+          "tags": ["TiVo", "Televisión"],
+          "readTime": "5 min",
+          "featured": false
+        },
+        {
+          "id": "a33f745a",
+          "title": "La IA es noticia vieja. La IA generativa es el futuro",
+          "summary": "El término Inteligencia Artificial es bien conocido, evocando películas futuristas como Robocop, Terminator y Matrix",
+          "source": "The Next Web",
+          "author": "Viviane Mendes", 
+          "url": "https://thenextweb.com/news/generative-ai-is-the-future",
+          "publishDate": "2026-01-10",
+          "category": "research",
+          "tags": ["IA Generativa", "Futuro"],
+          "readTime": "4 min",
+          "featured": false
+        },
+        {
+          "id": "cdf25c0c",
+          "title": "OpenAI supuestamente pide a contratistas subir trabajo real de empleos pasados",
+          "summary": "OpenAI supuestamente está pidiendo a contratistas que suban trabajo real de empleos anteriores para datos de entrenamiento",
+          "source": "TechCrunch",
+          "author": "Anthony Ha",
+          "url": "https://techcrunch.com/2026/01/10/openai-is-reportedly-asking-contractors-to-upload-real-work-from-past-jobs/",
+          "publishDate": "2026-01-10",
+          "category": "research",
+          "tags": ["OpenAI", "Datos"],
+          "readTime": "3 min",
+          "featured": false
+        },
+        {
+          "id": "f5d36183",
+          "title": "Estos dispositivos domésticos inteligentes me impresionaron en CES 2026",
+          "summary": "Elegí el Smart Lock U400 de Aqara y la aspiradora robot Saros Rover de Roborock como los mejores gadgets para el hogar inteligente",
+          "source": "The Verge",
+          "author": "Jennifer Pattison Tuohy",
+          "url": "https://www.theverge.com/tech/860241/best-smart-home-devices-ces-2026-matter-ikea-aqara-amazon",
+          "publishDate": "2026-01-10",
+          "category": "research",
+          "tags": ["CES", "Hogar Inteligente"],
+          "readTime": "6 min",
+          "featured": false
+        },
+        {
+          "id": "0d129c11",
+          "title": "Indonesia bloquea Grok por deepfakes sexualizados sin consentimiento",
+          "summary": "Funcionarios indonesios dijeron el sábado que están bloqueando temporalmente el acceso al chatbot Grok de xAI",
+          "source": "TechCrunch",
+          "author": "Anthony Ha",
+          "url": "https://techcrunch.com/2026/01/10/indonesia-blocks-grok-over-non-consensual-sexualized-deepfakes/",
+          "publishDate": "2026-01-10", 
+          "category": "research",
+          "tags": ["Grok", "Ética"],
+          "readTime": "2 min",
+          "featured": false
+        },
+        {
+          "id": "519f91d3",
+          "title": "La Bandeja de Entrada de IA de Google podría ser un vistazo al futuro de Gmail",
+          "summary": "Google anunció una nueva vista de Bandeja de Entrada de IA para Gmail que reemplaza la lista tradicional de correos",
+          "source": "The Verge",
+          "author": "Jay Peters",
+          "url": "https://www.theverge.com/tech/859864/google-gmail-ai-inbox-hands-on",
+          "publishDate": "2026-01-10",
+          "category": "research",
+          "tags": ["Gmail", "IA"],
+          "readTime": "3 min",
+          "featured": false
+        },
+        {
+          "id": "72a9930d",
+          "title": "SandboxAQ afirma que ex-ejecutivo intenta 'extorsión'",
+          "summary": "Un ex-ejecutivo de SandboxAQ presentó una demanda por despido injustificado llena de alegaciones impactantes",
+          "source": "TechCrunch",
+          "author": "Julie Bort",
+          "url": "https://techcrunch.com/2026/01/09/google-moonshot-spinout-sandboxaq-claims-an-ex-exec-is-attempting-extortion/",
+          "publishDate": "2026-01-10",
+          "category": "research",
+          "tags": ["SandboxAQ", "Legal"],
+          "readTime": "4 min",
+          "featured": false
+        },
+        {
+          "id": "024a8de3",
+          "title": "Conocí muchos robots raros en CES - aquí están los más memorables",
+          "summary": "Si los robots no siempre dan una representación totalmente precisa de dónde está el despliegue comercial en este momento",
+          "source": "TechCrunch",
+          "author": "Lucas Ropek",
+          "url": "https://techcrunch.com/2026/01/09/i-met-a-lot-of-weird-robots-at-ces-here-are-the-most-memorable/",
+          "publishDate": "2026-01-10",
+          "category": "research",
+          "tags": ["CES", "Robots"],
+          "readTime": "5 min",
+          "featured": false
+        },
+        {
+          "id": "21908cf9",
+          "title": "Todas las tendencias tecnológicas que vimos en CES 2026",
+          "summary": "CES es mucho: un diluvio de tecnología de consumo rodeado de mucha alfombra mala",
+          "source": "The Verge",
+          "author": "Thomas Ricker",
+          "url": "https://www.theverge.com/tech/859244/ces-2026-highlights-trends",
+          "publishDate": "2026-01-09",
+          "category": "research",
+          "tags": ["CES", "Tendencias"],
+          "readTime": "7 min",
+          "featured": false
+        },
+        {
+          "id": "e827d4b4",
+          "title": "Cómo Ralph Wiggum pasó de 'Los Simpson' al nombre más grande en IA ahora",
+          "summary": "Análisis del impacto cultural de los personajes de animación en el desarrollo de la inteligencia artificial",
+          "source": "VentureBeat",
+          "author": "jwalsh",
+          "url": "https://venturebeat.com/technology/how-ralph-wiggum-went-from-the-simpsons-to-the-biggest-name-in-ai-right-now",
+          "publishDate": "2026-01-09",
+          "category": "research",
+          "tags": ["Cultura", "IA"],
+          "readTime": "3 min",
+          "featured": false
+        },
+        {
+          "id": "0bfe9819",
+          "title": "Las cosas de CES 2026 que realmente podría comprar",
+          "summary": "Bienvenidos a Installer No. 111, tu guía de las mejores cosas del mundo tecnológico",
+          "source": "The Verge",
+          "author": "David Pierce",
+          "url": "https://www.theverge.com/tech/859808/ces-2026-best-gadgets-installer",
+          "publishDate": "2026-01-09",
+          "category": "research",
+          "tags": ["CES", "Gadgets"],
+          "readTime": "4 min",
+          "featured": false
+        }
+      ]
+    };
+
+    // Initialize the page
+    let currentNews = [...aiNewsData.news];
+    let filteredNews = [...currentNews];
+
+    function renderNews() {
+      const container = document.getElementById('news-container');
+      
+      if (filteredNews.length === 0) {
+        container.innerHTML = '<p>No se encontraron noticias que coincidan con tu búsqueda</p>';
+        return;
+      }
+      
+      container.innerHTML = filteredNews.map(news => `
+        <article class="news-card ${news.featured ? 'featured' : ''}">
+          <span class="news-category category-${news.category}">${getCategoryName(news.category)}</span>
+          ${news.featured ? '<span style="font-size: 20px; float: right;">⭐</span>' : ''}
+          
+          <h3 class="news-title">${news.title}</h3>
+          <p class="news-summary">${news.summary}</p>
+          
+          <div class="news-meta">
+            <span>👤 ${news.author}</span>
+            <span>📅 ${formatDate(news.publishDate)}</span>
+            <span>⏱️ ${news.readTime}</span>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 600; color: #3498db;">${news.source}</span>
+            <a href="${news.url}" class="read-more-btn" target="_blank">
+              Leer más →
+            </a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function getCategoryName(category) {
+      const names = {
+        research: 'Investigación',
+        startups: 'Startups'
+      };
+      return names[category] || category;
+    }
+
+    function formatDate(dateString) {
+      return new Date(dateString).toLocaleDateString('es-ES');
+    }
+
+    function filterNews() {
+      const searchTerm = document.getElementById('news-search').value.toLowerCase();
+      const categoryFilter = document.getElementById('category-filter').value;
+
+      filteredNews = currentNews.filter(news => {
+        const matchesSearch = news.title.toLowerCase().includes(searchTerm) ||
+                            news.summary.toLowerCase().includes(searchTerm) ||
+                            news.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+        
+        const matchesCategory = categoryFilter === 'all' || news.category === categoryFilter;
+        
+        return matchesSearch && matchesCategory;
+      });
+
+      renderNews();
+      updateStats();
+    }
+
+    function updateStats() {
+      document.getElementById('total-articles').textContent = filteredNews.length;
+      document.getElementById('featured-articles').textContent = filteredNews.filter(n => n.featured).length;
+      document.getElementById('last-update').textContent = new Date(aiNewsData.lastUpdated).toLocaleDateString('es-ES') + ' ' + new Date(aiNewsData.lastUpdated).toLocaleTimeString('es-ES', {hour: '2-digit', minute: '2-digit'});
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      renderNews();
+      updateStats();
+      
+      document.getElementById('news-search').addEventListener('input', filterNews);
+      document.getElementById('category-filter').addEventListener('change', filterNews);
+      document.getElementById('refresh-news').addEventListener('click', function() {
+        this.innerHTML = '🔄 Actualizando...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+          renderNews();
+          updateStats();
+          this.innerHTML = '🔄 Actualizar';
+          this.disabled = false;
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
