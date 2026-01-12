@@ -181,41 +181,95 @@
     .read-more-btn:hover {
       background: #2980b9;
     }
+
+    /* Language switcher buttons */
+    .lang-btn:hover {
+      background-color: #b5c0b1 !important;
+      color: white !important;
+    }
+
+    .lang-btn.active {
+      background-color: #a7bfc9 !important;
+      color: white !important;
+      border-color: #a7bfc9 !important;
+    }
+
+    /* Dark theme */
+    .dark-theme {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .dark-theme header {
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+    }
+
+    .dark-theme .news-card {
+      background-color: #2a2a2a;
+      border-color: #444;
+    }
+
+    .dark-theme .sidebar-card {
+      background-color: #2a2a2a;
+      border-color: #444;
+    }
+
+    .dark-theme .search-box,
+    .dark-theme .filter-dropdown {
+      background-color: #333;
+      color: #e0e0e0;
+      border-color: #555;
+    }
+
+    .dark-theme .refresh-btn {
+      background-color: #a7bfc9;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Noticias de IA</h1>
+    <h1 data-i18n="page_title">Noticias de IA</h1>
     <nav>
-      <a href="index.html">← Inicio</a>
-      <a href="index.html#about">Sobre</a>
-      <a href="index.html#projects">Pequeño pero hermoso</a>
-      <a href="index.html#contact">Contacto</a>
+      <a href="index.html" data-i18n="nav_home">← Inicio</a>
+      <a href="index.html#about" data-i18n="nav_about">Sobre</a>
+      <a href="index.html#projects" data-i18n="nav_projects">Pequeño pero hermoso</a>
+      <a href="index.html#contact" data-i18n="nav_contact">Contacto</a>
     </nav>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem;">
+      <div style="display: flex; gap: 0.5rem;">
+        <button class="lang-btn active" onclick="setLanguage('es')" style="padding: 0.4rem 0.8rem; border: 1px solid #ddd; background-color: white; color: #333; cursor: pointer; border-radius: 4px; font-size: 0.9rem; transition: all 0.2s;">ES</button>
+        <button class="lang-btn" onclick="setLanguage('en')" style="padding: 0.4rem 0.8rem; border: 1px solid #ddd; background-color: white; color: #333; cursor: pointer; border-radius: 4px; font-size: 0.9rem; transition: all 0.2s;">EN</button>
+        <button class="lang-btn" onclick="setLanguage('zh-TW')" style="padding: 0.4rem 0.8rem; border: 1px solid #ddd; background-color: white; color: #333; cursor: pointer; border-radius: 4px; font-size: 0.9rem; transition: all 0.2s;">中文</button>
+      </div>
+      <button id="theme-toggle" style="padding: 0.4rem 0.8rem; border: 1px solid #ddd; background-color: white; cursor: pointer; border-radius: 4px; font-size: 1.2rem; transition: all 0.2s;">🌚</button>
+    </div>
   </header>
 
   <div class="ai-news-container">
     <!-- Search and Filter Controls -->
     <div class="hero">
-      <h2>Últimas Noticias de IA</h2>
-      <p>Mantente al día con los avances más recientes en Inteligencia Artificial</p>
-      
+      <h2 data-i18n="hero_title">Últimas Noticias de IA</h2>
+      <p data-i18n="hero_subtitle">Mantente al día con los avances más recientes en Inteligencia Artificial</p>
+
       <div class="search-filter-container">
-        <input 
-          type="text" 
-          id="news-search" 
-          class="search-box" 
+        <input
+          type="text"
+          id="news-search"
+          class="search-box"
           placeholder="Buscar noticias..."
+          data-i18n-placeholder="search_placeholder"
         />
         
         <select id="category-filter" class="filter-dropdown">
-          <option value="all">Todas las categorías</option>
-          <option value="research">Investigación</option>
-          <option value="startups">Startups</option>
+          <option value="all" data-i18n="cat_all">Todas las categorías</option>
+          <option value="research" data-i18n="cat_research">Investigación</option>
+          <option value="startups" data-i18n="cat_startups">Startups</option>
         </select>
-        
-        <button id="refresh-news" class="refresh-btn">🔄 Actualizar</button>
+
+        <button id="refresh-news" class="refresh-btn"><span data-i18n="refresh_btn">🔄 Actualizar</span></button>
       </div>
     </div>
 
@@ -232,24 +286,28 @@
       <div class="sidebar">
         <!-- Quick Stats -->
         <div class="sidebar-card">
-          <div class="sidebar-title">📊 Estadísticas</div>
+          <div class="sidebar-title" data-i18n="stats_title">📊 Estadísticas</div>
           <div>
             <div>
-              <span>Total de artículos: </span>
+              <span data-i18n="total_articles">Total de artículos: </span>
               <span id="total-articles">0</span>
             </div>
             <div>
-              <span>Artículos destacados: </span>
+              <span data-i18n="featured_articles">Artículos destacados: </span>
               <span id="featured-articles">0</span>
             </div>
             <div>
-              <span>Última actualización: </span>
+              <span data-i18n="last_update">Última actualización: </span>
               <span id="last-update">--:--</span>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div style="text-align: center; margin: 2rem 0;">
+    <a href="index.html" style="color: #a7bfc9; text-decoration: none; font-size: 1.1rem; font-weight: 600;" data-i18n="back_to_home">← Volver a la página principal</a>
   </div>
 
   <footer>
@@ -272,8 +330,16 @@
       "news": [
         {
           "id": "52d9eb2a",
-          "title": "Google anuncia un nuevo protocolo para facilitar el comercio usando agentes de IA",
-          "summary": "Google presenta nuevos protocolos para facilitar el comercio electrónico utilizando agentes de inteligencia artificial",
+          "title": {
+            "es": "Google anuncia un nuevo protocolo para facilitar el comercio usando agentes de IA",
+            "en": "Google announces a new protocol to facilitate commerce using AI agents",
+            "zh-TW": "Google 宣布新協議以利用 AI 代理促進商務"
+          },
+          "summary": {
+            "es": "Google presenta nuevos protocolos para facilitar el comercio electrónico utilizando agentes de inteligencia artificial",
+            "en": "Google presents new protocols to facilitate e-commerce using artificial intelligence agents",
+            "zh-TW": "Google 推出新協議，利用人工智慧代理促進電子商務"
+          },
           "source": "TechCrunch",
           "author": "Ivan Mehta",
           "url": "https://techcrunch.com/2026/01/11/google-announces-a-new-protocol-to-facilitate-commerce-using-ai-agents/",
@@ -285,8 +351,16 @@
         },
         {
           "id": "c1a48296",
-          "title": "Firma de capital de riesgo de Silicon Valley recauda otros $15 mil millones",
-          "summary": "Ben Horowitz escribe que 'como líder estadounidense en Capital de Riesgo, el destino de la nueva tecnología en Estados Unidos descansa en parte en nuestros hombros.'",
+          "title": {
+            "es": "Firma de capital de riesgo de Silicon Valley recauda otros $15 mil millones",
+            "en": "Silicon Valley venture capital firm raises another $15 billion",
+            "zh-TW": "矽谷風險投資公司再募集150億美元"
+          },
+          "summary": {
+            "es": "Ben Horowitz escribe que 'como líder estadounidense en Capital de Riesgo, el destino de la nueva tecnología en Estados Unidos descansa en parte en nuestros hombros.'",
+            "en": "Ben Horowitz writes that 'as America's leader in Venture Capital, the fate of new technology in America rests in part on our shoulders.'",
+            "zh-TW": "Ben Horowitz 寫道：「作為美國風險投資的領導者，美國新技術的命運在某種程度上取決於我們的肩膀。」"
+          },
           "source": "TechCrunch",
           "author": "Connie Loizos",
           "url": "https://techcrunch.com/2026/01/09/the-venture-firm-that-ate-silicon-valley/",
@@ -298,8 +372,16 @@
         },
         {
           "id": "62c29ed5",
-          "title": "Las startups nucleares vuelven a estar de moda con reactores pequeños",
-          "summary": "Las startups de reactores modulares pequeños apuestan a que la fabricación en masa les ayudará a reducir costos",
+          "title": {
+            "es": "Las startups nucleares vuelven a estar de moda con reactores pequeños",
+            "en": "Nuclear startups are back in vogue with small reactors",
+            "zh-TW": "核能新創公司憑藉小型反應爐重新流行"
+          },
+          "summary": {
+            "es": "Las startups de reactores modulares pequeños apuestan a que la fabricación en masa les ayudará a reducir costos",
+            "en": "Small modular reactor startups are betting that mass manufacturing will help them reduce costs",
+            "zh-TW": "小型模組化反應爐新創公司押注大規模製造將幫助他們降低成本"
+          },
           "source": "TechCrunch",
           "author": "Tim De Chant",
           "url": "https://techcrunch.com/2026/01/11/nuclear-startups-are-back-in-vogue-with-small-reactors-and-big-challenges/",
@@ -310,9 +392,17 @@
           "featured": false
         },
         {
-          "id": "a98ebe71", 
-          "title": "Wing expandirá entrega con drones a otras 150 tiendas Walmart",
-          "summary": "La asociación expandirá el servicio de entrega con drones de Wing a más de 270 tiendas Walmart para 2027",
+          "id": "a98ebe71",
+          "title": {
+            "es": "Wing expandirá entrega con drones a otras 150 tiendas Walmart",
+            "en": "Wing to expand drone delivery to another 150 Walmart stores",
+            "zh-TW": "Wing 將無人機配送擴展到另外150家 Walmart 商店"
+          },
+          "summary": {
+            "es": "La asociación expandirá el servicio de entrega con drones de Wing a más de 270 tiendas Walmart para 2027",
+            "en": "The partnership will expand Wing's drone delivery service to over 270 Walmart stores by 2027",
+            "zh-TW": "該合作將在2027年前將 Wing 的無人機配送服務擴展到超過270家 Walmart 商店"
+          },
           "source": "TechCrunch",
           "author": "Kirsten Korosec",
           "url": "https://techcrunch.com/2026/01/11/wing-to-expand-drone-delivery-to-another-150-walmart-stores/",
@@ -324,8 +414,16 @@
         },
         {
           "id": "2c00b043",
-          "title": "Cómo TiVo mató a la TV en vivo",
-          "summary": "Por un tiempo, parecía que todos tenían un TiVo. Era un elemento argumental en grandes programas de TV y tenía fanáticos de Hollywood de primera línea",
+          "title": {
+            "es": "Cómo TiVo mató a la TV en vivo",
+            "en": "How TiVo killed live TV",
+            "zh-TW": "TiVo 如何殺死直播電視"
+          },
+          "summary": {
+            "es": "Por un tiempo, parecía que todos tenían un TiVo. Era un elemento argumental en grandes programas de TV y tenía fanáticos de Hollywood de primera línea",
+            "en": "For a while, it seemed like everyone had a TiVo. It was a plot device on major TV shows and had A-list Hollywood fans",
+            "zh-TW": "有一段時間，似乎每個人都有一台 TiVo。它是主要電視節目的情節裝置，並擁有好萊塢一線粉絲"
+          },
           "source": "The Verge",
           "author": "David Pierce",
           "url": "https://www.theverge.com/podcast/860321/tivo-tv-streaming-version-history",
@@ -337,10 +435,18 @@
         },
         {
           "id": "a33f745a",
-          "title": "La IA es noticia vieja. La IA generativa es el futuro",
-          "summary": "El término Inteligencia Artificial es bien conocido, evocando películas futuristas como Robocop, Terminator y Matrix",
+          "title": {
+            "es": "La IA es noticia vieja. La IA generativa es el futuro",
+            "en": "AI is old news. Generative AI is the future",
+            "zh-TW": "AI 是舊聞。生成式 AI 才是未來"
+          },
+          "summary": {
+            "es": "El término Inteligencia Artificial es bien conocido, evocando películas futuristas como Robocop, Terminator y Matrix",
+            "en": "The term Artificial Intelligence is well known, evoking futuristic movies like Robocop, Terminator and Matrix",
+            "zh-TW": "人工智慧這個術語眾所周知，讓人聯想到《機器戰警》、《終結者》和《駭客任務》等未來主義電影"
+          },
           "source": "The Next Web",
-          "author": "Viviane Mendes", 
+          "author": "Viviane Mendes",
           "url": "https://thenextweb.com/news/generative-ai-is-the-future",
           "publishDate": "2026-01-10",
           "category": "research",
@@ -350,8 +456,16 @@
         },
         {
           "id": "cdf25c0c",
-          "title": "OpenAI supuestamente pide a contratistas subir trabajo real de empleos pasados",
-          "summary": "OpenAI supuestamente está pidiendo a contratistas que suban trabajo real de empleos anteriores para datos de entrenamiento",
+          "title": {
+            "es": "OpenAI supuestamente pide a contratistas subir trabajo real de empleos pasados",
+            "en": "OpenAI is reportedly asking contractors to upload real work from past jobs",
+            "zh-TW": "據報導 OpenAI 要求承包商上傳過去工作的真實工作內容"
+          },
+          "summary": {
+            "es": "OpenAI supuestamente está pidiendo a contratistas que suban trabajo real de empleos anteriores para datos de entrenamiento",
+            "en": "OpenAI is reportedly asking contractors to upload real work from previous jobs for training data",
+            "zh-TW": "據報導 OpenAI 要求承包商上傳以前工作的真實工作內容用於訓練數據"
+          },
           "source": "TechCrunch",
           "author": "Anthony Ha",
           "url": "https://techcrunch.com/2026/01/10/openai-is-reportedly-asking-contractors-to-upload-real-work-from-past-jobs/",
@@ -363,8 +477,16 @@
         },
         {
           "id": "f5d36183",
-          "title": "Estos dispositivos domésticos inteligentes me impresionaron en CES 2026",
-          "summary": "Elegí el Smart Lock U400 de Aqara y la aspiradora robot Saros Rover de Roborock como los mejores gadgets para el hogar inteligente",
+          "title": {
+            "es": "Estos dispositivos domésticos inteligentes me impresionaron en CES 2026",
+            "en": "These smart home devices impressed me at CES 2026",
+            "zh-TW": "這些智慧家居設備在 CES 2026 令我印象深刻"
+          },
+          "summary": {
+            "es": "Elegí el Smart Lock U400 de Aqara y la aspiradora robot Saros Rover de Roborock como los mejores gadgets para el hogar inteligente",
+            "en": "I picked Aqara's Smart Lock U400 and Roborock's Saros Rover robot vacuum as the best smart home gadgets",
+            "zh-TW": "我選擇了 Aqara 的 Smart Lock U400 和 Roborock 的 Saros Rover 機器人吸塵器作為最佳智慧家居小工具"
+          },
           "source": "The Verge",
           "author": "Jennifer Pattison Tuohy",
           "url": "https://www.theverge.com/tech/860241/best-smart-home-devices-ces-2026-matter-ikea-aqara-amazon",
@@ -376,12 +498,20 @@
         },
         {
           "id": "0d129c11",
-          "title": "Indonesia bloquea Grok por deepfakes sexualizados sin consentimiento",
-          "summary": "Funcionarios indonesios dijeron el sábado que están bloqueando temporalmente el acceso al chatbot Grok de xAI",
+          "title": {
+            "es": "Indonesia bloquea Grok por deepfakes sexualizados sin consentimiento",
+            "en": "Indonesia blocks Grok over non-consensual sexualized deepfakes",
+            "zh-TW": "印尼因未經同意的色情深偽封鎖 Grok"
+          },
+          "summary": {
+            "es": "Funcionarios indonesios dijeron el sábado que están bloqueando temporalmente el acceso al chatbot Grok de xAI",
+            "en": "Indonesian officials said Saturday they are temporarily blocking access to xAI's Grok chatbot",
+            "zh-TW": "印尼官員週六表示，他們正在暫時封鎖 xAI 的 Grok 聊天機器人"
+          },
           "source": "TechCrunch",
           "author": "Anthony Ha",
           "url": "https://techcrunch.com/2026/01/10/indonesia-blocks-grok-over-non-consensual-sexualized-deepfakes/",
-          "publishDate": "2026-01-10", 
+          "publishDate": "2026-01-10",
           "category": "research",
           "tags": ["Grok", "Ética"],
           "readTime": "2 min",
@@ -389,8 +519,16 @@
         },
         {
           "id": "519f91d3",
-          "title": "La Bandeja de Entrada de IA de Google podría ser un vistazo al futuro de Gmail",
-          "summary": "Google anunció una nueva vista de Bandeja de Entrada de IA para Gmail que reemplaza la lista tradicional de correos",
+          "title": {
+            "es": "La Bandeja de Entrada de IA de Google podría ser un vistazo al futuro de Gmail",
+            "en": "Google's AI Inbox could be a glimpse at Gmail's future",
+            "zh-TW": "Google 的 AI 收件箱可能是 Gmail 未來的預覽"
+          },
+          "summary": {
+            "es": "Google anunció una nueva vista de Bandeja de Entrada de IA para Gmail que reemplaza la lista tradicional de correos",
+            "en": "Google announced a new AI Inbox view for Gmail that replaces the traditional email list",
+            "zh-TW": "Google 宣布為 Gmail 推出新的 AI 收件箱視圖，取代傳統的電子郵件列表"
+          },
           "source": "The Verge",
           "author": "Jay Peters",
           "url": "https://www.theverge.com/tech/859864/google-gmail-ai-inbox-hands-on",
@@ -402,8 +540,16 @@
         },
         {
           "id": "72a9930d",
-          "title": "SandboxAQ afirma que ex-ejecutivo intenta 'extorsión'",
-          "summary": "Un ex-ejecutivo de SandboxAQ presentó una demanda por despido injustificado llena de alegaciones impactantes",
+          "title": {
+            "es": "SandboxAQ afirma que ex-ejecutivo intenta 'extorsión'",
+            "en": "SandboxAQ claims ex-executive is attempting 'extortion'",
+            "zh-TW": "SandboxAQ 聲稱前高管企圖「勒索」"
+          },
+          "summary": {
+            "es": "Un ex-ejecutivo de SandboxAQ presentó una demanda por despido injustificado llena de alegaciones impactantes",
+            "en": "A former SandboxAQ executive filed a wrongful termination lawsuit filled with shocking allegations",
+            "zh-TW": "SandboxAQ 前高管提起不當解僱訴訟，充滿驚人指控"
+          },
           "source": "TechCrunch",
           "author": "Julie Bort",
           "url": "https://techcrunch.com/2026/01/09/google-moonshot-spinout-sandboxaq-claims-an-ex-exec-is-attempting-extortion/",
@@ -415,8 +561,16 @@
         },
         {
           "id": "024a8de3",
-          "title": "Conocí muchos robots raros en CES - aquí están los más memorables",
-          "summary": "Si los robots no siempre dan una representación totalmente precisa de dónde está el despliegue comercial en este momento",
+          "title": {
+            "es": "Conocí muchos robots raros en CES - aquí están los más memorables",
+            "en": "I met a lot of weird robots at CES - here are the most memorable",
+            "zh-TW": "我在 CES 遇到了很多奇怪的機器人 - 這裡是最令人難忘的"
+          },
+          "summary": {
+            "es": "Si los robots no siempre dan una representación totalmente precisa de dónde está el despliegue comercial en este momento",
+            "en": "If robots don't always give a totally accurate representation of where commercial deployment is right now",
+            "zh-TW": "如果機器人並不總能準確地代表目前商業部署的狀況"
+          },
           "source": "TechCrunch",
           "author": "Lucas Ropek",
           "url": "https://techcrunch.com/2026/01/09/i-met-a-lot-of-weird-robots-at-ces-here-are-the-most-memorable/",
@@ -428,8 +582,16 @@
         },
         {
           "id": "21908cf9",
-          "title": "Todas las tendencias tecnológicas que vimos en CES 2026",
-          "summary": "CES es mucho: un diluvio de tecnología de consumo rodeado de mucha alfombra mala",
+          "title": {
+            "es": "Todas las tendencias tecnológicas que vimos en CES 2026",
+            "en": "All the tech trends we saw at CES 2026",
+            "zh-TW": "我們在 CES 2026 看到的所有科技趨勢"
+          },
+          "summary": {
+            "es": "CES es mucho: un diluvio de tecnología de consumo rodeado de mucha alfombra mala",
+            "en": "CES is a lot: a deluge of consumer technology surrounded by lots of bad carpet",
+            "zh-TW": "CES 規模龐大：大量消費科技被許多難看的地毯包圍"
+          },
           "source": "The Verge",
           "author": "Thomas Ricker",
           "url": "https://www.theverge.com/tech/859244/ces-2026-highlights-trends",
@@ -441,8 +603,16 @@
         },
         {
           "id": "e827d4b4",
-          "title": "Cómo Ralph Wiggum pasó de 'Los Simpson' al nombre más grande en IA ahora",
-          "summary": "Análisis del impacto cultural de los personajes de animación en el desarrollo de la inteligencia artificial",
+          "title": {
+            "es": "Cómo Ralph Wiggum pasó de 'Los Simpson' al nombre más grande en IA ahora",
+            "en": "How Ralph Wiggum went from 'The Simpsons' to the biggest name in AI right now",
+            "zh-TW": "Ralph Wiggum 如何從《辛普森家庭》變成現在 AI 界最大的名字"
+          },
+          "summary": {
+            "es": "Análisis del impacto cultural de los personajes de animación en el desarrollo de la inteligencia artificial",
+            "en": "Analysis of the cultural impact of animation characters on artificial intelligence development",
+            "zh-TW": "分析動畫角色對人工智慧發展的文化影響"
+          },
           "source": "VentureBeat",
           "author": "jwalsh",
           "url": "https://venturebeat.com/technology/how-ralph-wiggum-went-from-the-simpsons-to-the-biggest-name-in-ai-right-now",
@@ -454,8 +624,16 @@
         },
         {
           "id": "0bfe9819",
-          "title": "Las cosas de CES 2026 que realmente podría comprar",
-          "summary": "Bienvenidos a Installer No. 111, tu guía de las mejores cosas del mundo tecnológico",
+          "title": {
+            "es": "Las cosas de CES 2026 que realmente podría comprar",
+            "en": "The CES 2026 stuff I'd actually buy",
+            "zh-TW": "我真正會買的 CES 2026 產品"
+          },
+          "summary": {
+            "es": "Bienvenidos a Installer No. 111, tu guía de las mejores cosas del mundo tecnológico",
+            "en": "Welcome to Installer No. 111, your guide to the best things in the tech world",
+            "zh-TW": "歡迎來到 Installer No. 111，你的科技世界最佳產品指南"
+          },
           "source": "The Verge",
           "author": "David Pierce",
           "url": "https://www.theverge.com/tech/859808/ces-2026-best-gadgets-installer",
@@ -471,33 +649,40 @@
     // Initialize the page
     let currentNews = [...aiNewsData.news];
     let filteredNews = [...currentNews];
+    let currentLang = 'es'; // 默认语言
 
     function renderNews() {
       const container = document.getElementById('news-container');
-      
+
       if (filteredNews.length === 0) {
         container.innerHTML = '<p>No se encontraron noticias que coincidan con tu búsqueda</p>';
         return;
       }
-      
+
+      const readMoreText = {
+        es: 'Leer más →',
+        en: 'Read more →',
+        'zh-TW': '閱讀更多 →'
+      };
+
       container.innerHTML = filteredNews.map(news => `
         <article class="news-card ${news.featured ? 'featured' : ''}">
           <span class="news-category category-${news.category}">${getCategoryName(news.category)}</span>
           ${news.featured ? '<span style="font-size: 20px; float: right;">⭐</span>' : ''}
-          
-          <h3 class="news-title">${news.title}</h3>
-          <p class="news-summary">${news.summary}</p>
-          
+
+          <h3 class="news-title">${news.title[currentLang]}</h3>
+          <p class="news-summary">${news.summary[currentLang]}</p>
+
           <div class="news-meta">
             <span>👤 ${news.author}</span>
             <span>📅 ${formatDate(news.publishDate)}</span>
             <span>⏱️ ${news.readTime}</span>
           </div>
-          
+
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span style="font-weight: 600; color: #3498db;">${news.source}</span>
             <a href="${news.url}" class="read-more-btn" target="_blank">
-              Leer más →
+              ${readMoreText[currentLang]}
             </a>
           </div>
         </article>
@@ -559,6 +744,137 @@
         }, 1000);
       });
     });
+
+    // 翻译系统
+    const translations = {
+      es: {
+        page_title: "Noticias de IA",
+        nav_home: "← Inicio",
+        nav_about: "Sobre",
+        nav_projects: "Pequeño pero hermoso",
+        nav_contact: "Contacto",
+        hero_title: "Últimas Noticias de IA",
+        hero_subtitle: "Mantente al día con los avances más recientes en Inteligencia Artificial",
+        search_placeholder: "Buscar noticias...",
+        cat_all: "Todas las categorías",
+        cat_research: "Investigación",
+        cat_startups: "Startups",
+        refresh_btn: "🔄 Actualizar",
+        stats_title: "📊 Estadísticas",
+        total_articles: "Total de artículos: ",
+        featured_articles: "Artículos destacados: ",
+        last_update: "Última actualización: ",
+        back_to_home: "← Volver a la página principal"
+      },
+      en: {
+        page_title: "AI News",
+        nav_home: "← Home",
+        nav_about: "About",
+        nav_projects: "Small but Beautiful",
+        nav_contact: "Contact",
+        hero_title: "Latest AI News",
+        hero_subtitle: "Stay up to date with the latest advances in Artificial Intelligence",
+        search_placeholder: "Search news...",
+        cat_all: "All categories",
+        cat_research: "Research",
+        cat_startups: "Startups",
+        refresh_btn: "🔄 Refresh",
+        stats_title: "📊 Statistics",
+        total_articles: "Total articles: ",
+        featured_articles: "Featured articles: ",
+        last_update: "Last update: ",
+        back_to_home: "← Back to homepage"
+      },
+      "zh-TW": {
+        page_title: "AI 新聞",
+        nav_home: "← 首頁",
+        nav_about: "關於",
+        nav_projects: "小而美",
+        nav_contact: "聯絡",
+        hero_title: "最新 AI 新聞",
+        hero_subtitle: "掌握人工智慧最新進展",
+        search_placeholder: "搜尋新聞...",
+        cat_all: "所有類別",
+        cat_research: "研究",
+        cat_startups: "新創公司",
+        refresh_btn: "🔄 更新",
+        stats_title: "📊 統計資料",
+        total_articles: "文章總數: ",
+        featured_articles: "精選文章: ",
+        last_update: "最後更新: ",
+        back_to_home: "← 返回主頁"
+      }
+    };
+
+    function setLanguage(lang) {
+      // 更新按钮状态
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      if (typeof event !== 'undefined' && event.target) {
+        event.target.classList.add('active');
+      } else {
+        // 页面加载时手动激活对应按钮
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          if ((lang === 'es' && btn.textContent === 'ES') ||
+              (lang === 'en' && btn.textContent === 'EN') ||
+              (lang === 'zh-TW' && btn.textContent === '中文')) {
+            btn.classList.add('active');
+          }
+        });
+      }
+
+      // 更新当前语言
+      currentLang = lang;
+
+      // 翻译页面
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+
+      // 翻译placeholder
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key]) {
+          element.placeholder = translations[lang][key];
+        }
+      });
+
+      // 翻译select options
+      document.querySelectorAll('option[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+
+      // 重新渲染新闻内容
+      renderNews();
+
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    // 主题切换
+    const themeBtn = document.getElementById('theme-toggle');
+    themeBtn.onclick = function() {
+      document.body.classList.toggle('dark-theme');
+      themeBtn.textContent = document.body.classList.contains('dark-theme') ? '🌞' : '🌚';
+      localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+    };
+
+    // 页面加载时应用保存的设置
+    if(localStorage.getItem('theme') === 'dark'){
+      document.body.classList.add('dark-theme');
+      themeBtn.textContent = '🌞';
+    }
+
+    // 应用保存的语言设置
+    const savedLang = localStorage.getItem('preferred-language');
+    if (savedLang && savedLang !== 'es') {
+      currentLang = savedLang; // 先设置语言
+      setLanguage(savedLang); // 应用语言设置
+    }
   </script>
 </body>
 </html>

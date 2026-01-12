@@ -214,6 +214,17 @@
       color: var(--morandi2);
     }
 
+    /* Language switcher buttons */
+    .lang-btn:hover {
+      background-color: var(--morandi4) !important;
+      color: white !important;
+    }
+
+    .lang-btn.active {
+      background-color: var(--morandi5) !important;
+      color: white !important;
+      border-color: var(--morandi5) !important;
+    }
 
     footer {
       text-align: center;
@@ -227,28 +238,36 @@
 </head>
 <body>
   <header>
-    <h1>Crecimientos Lentos</h1>
+    <h1 data-i18n="page_title">Crecimientos Lentos</h1>
     <nav>
-      <a href="index.html#projects">Volver a proyectos</a>
+      <a href="index.html#projects" data-i18n="back_link">Volver a proyectos</a>
     </nav>
-    <button id="theme-toggle" style="margin-left: 1rem; cursor:pointer;">🌙</button>
+    <div class="header-controls" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem;">
+      <div class="language-switcher" style="display: flex; gap: 0.5rem;">
+        <button class="lang-btn active" onclick="setLanguage('es')" style="padding: 0.4rem 0.8rem; border: 1px solid var(--morandi3); background-color: var(--main-bg); color: var(--main-text); cursor: pointer; border-radius: 4px; font-size: 0.9rem; transition: all 0.2s;">ES</button>
+        <button class="lang-btn" onclick="setLanguage('en')" style="padding: 0.4rem 0.8rem; border: 1px solid var(--morandi3); background-color: var(--main-bg); color: var(--main-text); cursor: pointer; border-radius: 4px; font-size: 0.9rem; transition: all 0.2s;">EN</button>
+        <button class="lang-btn" onclick="setLanguage('zh-TW')" style="padding: 0.4rem 0.8rem; border: 1px solid var(--morandi3); background-color: var(--main-bg); color: var(--main-text); cursor: pointer; border-radius: 4px; font-size: 0.9rem; transition: all 0.2s;">中文</button>
+      </div>
+      <button id="theme-toggle" style="padding: 0.4rem 0.8rem; border: 1px solid var(--morandi3); background-color: var(--main-bg); cursor: pointer; border-radius: 4px; font-size: 1.2rem; transition: all 0.2s;">🌙</button>
+    </div>
   </header>
   <div class="hero">
-    <h2>Cada paso cuenta en el camino del aprendizaje</h2>
-    <p>Un espacio para registrar y celebrar cada pequeño avance, enfocándose en el crecimiento constante y sostenible.</p>
+    <h2 data-i18n="hero_title">Cada paso cuenta en el camino del aprendizaje</h2>
+    <p data-i18n="hero_subtitle">Un espacio para registrar y celebrar cada pequeño avance, enfocándose en el crecimiento constante y sostenible.</p>
   </div>
   <main>
     <section>
-      <h2>Características principales</h2>
+      <h2 data-i18n="features_title">Características principales</h2>
       <ul>
-        <li>Registro de logros diarios y semanales</li>
-        <li>Definición y seguimiento de objetivos personales</li>
-        <li>Visualización gráfica del progreso</li>
-        <li>Soporte para imágenes, videos y fragmentos de código</li>
+        <li data-i18n="feature1">Registro de logros diarios y semanales</li>
+        <li data-i18n="feature2">Definición y seguimiento de objetivos personales</li>
+        <li data-i18n="feature3">Visualización gráfica del progreso</li>
+        <li data-i18n="feature4">Soporte para imágenes, videos y fragmentos de código</li>
+        <li><a href="github-tutorial.html" class="project-link" data-i18n="github_guide_link">📚 Guía de Despliegue en GitHub Pages →</a></li>
       </ul>
     </section>
     <section>
-      <h2>Tecnologías utilizadas</h2>
+      <h2 data-i18n="tech_title">Tecnologías utilizadas</h2>
       <ul>
         <li>Python (Django)</li>
         <li>PostgreSQL</li>
@@ -256,72 +275,225 @@
       </ul>
     </section>
     <section>
-      <h2>📚 Registro de Aprendizaje</h2>
+      <h2 data-i18n="learning_title">📚 Registro de Aprendizaje</h2>
       <div class="project-grid">
         <div class="project-card">
-          <h3>🚀 GitHub Pages Deployment</h3>
-          <p><strong>Fecha:</strong> Enero 2026</p>
-          <p><strong>Objetivo:</strong> Aprender a desplegar sitios web usando GitHub Pages</p>
-          <p><strong>Logros:</strong></p>
+          <h3 data-i18n="card1_title">🚀 GitHub Pages Deployment</h3>
+          <p><strong data-i18n="date_label">Fecha:</strong> <span data-i18n="card1_date">Enero 2026</span></p>
+          <p><strong data-i18n="goal_label">Objetivo:</strong> <span data-i18n="card1_goal">Aprender a desplegar sitios web usando GitHub Pages</span></p>
+          <p><strong data-i18n="achievements_label">Logros:</strong></p>
           <ul>
-            <li>✅ Configuré mi primer repositorio GitHub</li>
-            <li>✅ Desplegué sitio web con dominio personalizado</li>
-            <li>✅ Aprendí comandos básicos de Git</li>
-            <li>✅ Creé scripts de automatización</li>
+            <li data-i18n="card1_achievement1">✅ Configuré mi primer repositorio GitHub</li>
+            <li data-i18n="card1_achievement2">✅ Desplegué sitio web con dominio personalizado</li>
+            <li data-i18n="card1_achievement3">✅ Aprendí comandos básicos de Git</li>
+            <li data-i18n="card1_achievement4">✅ Creé scripts de automatización</li>
           </ul>
-          <p><strong>Recursos:</strong></p>
-          <ul>
-            <li><a href="GitHub-Pages-部署指南.md" class="project-link">📖 Guía completa de deployment</a></li>
-            <li><a href="我的日常操作指南.md" class="project-link">🛠️ Operaciones diarias</a></li>
-            <li><a href="新手GitHub部署教程.md" class="project-link">🎓 Tutorial para principiantes</a></li>
-          </ul>
-          <p><strong>Próximos pasos:</strong> Dominar branching y colaboración</p>
         </div>
-        
+
         <div class="project-card">
-          <h3>🐍 Python & AI News</h3>
-          <p><strong>Fecha:</strong> Enero 2026</p>
-          <p><strong>Objetivo:</strong> Crear sistema automatizado de noticias IA</p>
-          <p><strong>Logros:</strong></p>
+          <h3 data-i18n="card2_title">🐍 Python & AI News</h3>
+          <p><strong data-i18n="date_label">Fecha:</strong> <span data-i18n="card2_date">Enero 2026</span></p>
+          <p><strong data-i18n="goal_label">Objetivo:</strong> <span data-i18n="card2_goal">Crear sistema automatizado de noticias IA</span></p>
+          <p><strong data-i18n="achievements_label">Logros:</strong></p>
           <ul>
-            <li>✅ Configuré NewsAPI para datos reales</li>
-            <li>✅ Creé script de agregación RSS</li>
-            <li>✅ Implementé traducción automática</li>
-            <li>✅ Automaticé con cron jobs</li>
+            <li data-i18n="card2_achievement1">✅ Configuré NewsAPI para datos reales</li>
+            <li data-i18n="card2_achievement2">✅ Creé script de agregación RSS</li>
+            <li data-i18n="card2_achievement3">✅ Implementé traducción automática</li>
+            <li data-i18n="card2_achievement4">✅ Automaticé con cron jobs</li>
           </ul>
-          <p><strong>Tecnologías:</strong> Python, NewsAPI, RSS, JavaScript</p>
-          <p><strong>Resultado:</strong> <a href="ai-news-fixed.html" class="project-link">🔗 Ver sistema en acción</a></p>
         </div>
       </div>
     </section>
-
-    <section>
-      <h2>Enlace al proyecto</h2>
-      <p>
-        <a href="https://github.com/Duoduodaye/cicidas" class="project-link" target="_blank" rel="noopener noreferrer">Ver repositorio en GitHub &rarr;</a>
-      </p>
-    </section>
   </main>
+
+  <div style="text-align: center; margin: 2rem 0;">
+    <a href="index.html" class="project-link" data-i18n="back_to_home" style="font-size: 1.1rem; font-weight: 600;">← Volver a la página principal</a>
+  </div>
+
   <footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> Cicidas. Todos los derechos reservados.
+    &copy; <script>document.write(new Date().getFullYear())</script> Cicidas. <span data-i18n="all_rights">Todos los derechos reservados.</span>
   </footer>
   <script>
-    // 复制主页的主题切换JS
-    const btn = document.getElementById('theme-toggle');
-    btn.onclick = function() {
-      document.body.classList.toggle('dark-theme');
-      if(document.body.classList.contains('dark-theme')){
-        localStorage.setItem('theme', 'dark');
-        btn.textContent = '☀️';
-      } else {
-        localStorage.setItem('theme', 'light');
-        btn.textContent = '🌙';
-      }
-    };
-    if(localStorage.getItem('theme') === 'dark'){
-      document.body.classList.add('dark-theme');
-      btn.textContent = '☀️';
+// 翻译系统
+const translations = {
+  es: {
+    page_title: "Crecimientos Lentos",
+    back_link: "Volver a proyectos",
+    hero_title: "Cada paso cuenta en el camino del aprendizaje",
+    hero_subtitle: "Un espacio para registrar y celebrar cada pequeño avance, enfocándose en el crecimiento constante y sostenible.",
+    features_title: "Características principales",
+    feature1: "Registro de logros diarios y semanales",
+    feature2: "Definición y seguimiento de objetivos personales",
+    feature3: "Visualización gráfica del progreso",
+    feature4: "Soporte para imágenes, videos y fragmentos de código",
+    github_guide_link: "📚 Guía de Despliegue en GitHub Pages →",
+    tech_title: "Tecnologías utilizadas",
+    learning_title: "📚 Registro de Aprendizaje",
+    // Card labels
+    date_label: "Fecha:",
+    goal_label: "Objetivo:",
+    achievements_label: "Logros:",
+    resources_label: "Recursos:",
+    next_steps_label: "Próximos pasos:",
+    tech_label: "Tecnologías:",
+    result_label: "Resultado:",
+    // Card 1 - GitHub
+    card1_title: "🚀 GitHub Pages Deployment",
+    card1_date: "Enero 2026",
+    card1_goal: "Aprender a desplegar sitios web usando GitHub Pages",
+    card1_achievement1: "✅ Configuré mi primer repositorio GitHub",
+    card1_achievement2: "✅ Desplegué sitio web con dominio personalizado",
+    card1_achievement3: "✅ Aprendí comandos básicos de Git",
+    card1_achievement4: "✅ Creé scripts de automatización",
+    card1_resource1: "📖 Guía completa de deployment",
+    card1_resource2: "🛠️ Operaciones diarias",
+    card1_resource3: "🎓 Tutorial para principiantes",
+    card1_next_steps: "Dominar branching y colaboración",
+    // Card 2 - Python & AI
+    card2_title: "🐍 Python & AI News",
+    card2_date: "Enero 2026",
+    card2_goal: "Crear sistema automatizado de noticias IA",
+    card2_achievement1: "✅ Configuré NewsAPI para datos reales",
+    card2_achievement2: "✅ Creé script de agregación RSS",
+    card2_achievement3: "✅ Implementé traducción automática",
+    card2_achievement4: "✅ Automaticé con cron jobs",
+    back_to_home: "← Volver a la página principal",
+    all_rights: "Todos los derechos reservados."
+  },
+  en: {
+    page_title: "Slow Growth",
+    back_link: "Back to projects",
+    hero_title: "Every step counts on the learning journey",
+    hero_subtitle: "A space to record and celebrate every small progress, focusing on constant and sustainable growth.",
+    features_title: "Main Features",
+    feature1: "Daily and weekly achievement logging",
+    feature2: "Definition and tracking of personal goals",
+    feature3: "Graphical progress visualization",
+    feature4: "Support for images, videos and code snippets",
+    github_guide_link: "📚 GitHub Pages Deployment Guide →",
+    tech_title: "Technologies Used",
+    learning_title: "📚 Learning Log",
+    // Card labels
+    date_label: "Date:",
+    goal_label: "Goal:",
+    achievements_label: "Achievements:",
+    resources_label: "Resources:",
+    next_steps_label: "Next steps:",
+    tech_label: "Technologies:",
+    result_label: "Result:",
+    // Card 1 - GitHub
+    card1_title: "🚀 GitHub Pages Deployment",
+    card1_date: "January 2026",
+    card1_goal: "Learn to deploy websites using GitHub Pages",
+    card1_achievement1: "✅ Set up my first GitHub repository",
+    card1_achievement2: "✅ Deployed website with custom domain",
+    card1_achievement3: "✅ Learned basic Git commands",
+    card1_achievement4: "✅ Created automation scripts",
+    card1_resource1: "📖 Complete deployment guide",
+    card1_resource2: "🛠️ Daily operations",
+    card1_resource3: "🎓 Beginner tutorial",
+    card1_next_steps: "Master branching and collaboration",
+    // Card 2 - Python & AI
+    card2_title: "🐍 Python & AI News",
+    card2_date: "January 2026",
+    card2_goal: "Create automated AI news system",
+    card2_achievement1: "✅ Configured NewsAPI for real data",
+    card2_achievement2: "✅ Created RSS aggregation script",
+    card2_achievement3: "✅ Implemented automatic translation",
+    card2_achievement4: "✅ Automated with cron jobs",
+    back_to_home: "← Back to homepage",
+    all_rights: "All rights reserved."
+  },
+  "zh-TW": {
+    page_title: "緩慢成長",
+    back_link: "返回專案",
+    hero_title: "學習路上的每一步都很重要",
+    hero_subtitle: "一個記錄和慶祝每個小進步的空間，專注於持續和可持續的成長。",
+    features_title: "主要功能",
+    feature1: "每日和每週成就記錄",
+    feature2: "個人目標定義和追蹤",
+    feature3: "圖形化進度視覺化",
+    feature4: "支援圖片、影片和程式碼片段",
+    github_guide_link: "📚 GitHub Pages 部署指南 →",
+    tech_title: "使用技術",
+    learning_title: "📚 學習記錄",
+    // Card labels
+    date_label: "日期：",
+    goal_label: "目標：",
+    achievements_label: "成就：",
+    resources_label: "資源：",
+    next_steps_label: "下一步：",
+    tech_label: "技術：",
+    result_label: "結果：",
+    // Card 1 - GitHub
+    card1_title: "🚀 GitHub Pages 部署",
+    card1_date: "2026年1月",
+    card1_goal: "學習使用 GitHub Pages 部署網站",
+    card1_achievement1: "✅ 建立了我的第一個 GitHub 儲存庫",
+    card1_achievement2: "✅ 部署了自訂網域的網站",
+    card1_achievement3: "✅ 學習了基本的 Git 指令",
+    card1_achievement4: "✅ 建立了自動化腳本",
+    card1_resource1: "📖 完整部署指南",
+    card1_resource2: "🛠️ 日常操作",
+    card1_resource3: "🎓 新手教學",
+    card1_next_steps: "精通分支和協作",
+    // Card 2 - Python & AI
+    card2_title: "🐍 Python 與 AI 新聞",
+    card2_date: "2026年1月",
+    card2_goal: "建立自動化 AI 新聞系統",
+    card2_achievement1: "✅ 配置 NewsAPI 獲取真實資料",
+    card2_achievement2: "✅ 建立 RSS 聚合腳本",
+    card2_achievement3: "✅ 實作自動翻譯",
+    card2_achievement4: "✅ 使用 cron jobs 自動化",
+    back_to_home: "← 返回主頁",
+    all_rights: "保留所有權利。"
+  }
+};
+
+function setLanguage(lang) {
+  // 更新按钮状态
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // 翻译页面
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (translations[lang][key]) {
+      element.textContent = translations[lang][key];
     }
+  });
+
+  localStorage.setItem('preferred-language', lang);
+}
+
+// 主题切换
+const btn = document.getElementById('theme-toggle');
+btn.onclick = function() {
+  document.body.classList.toggle('dark-theme');
+  if(document.body.classList.contains('dark-theme')){
+    localStorage.setItem('theme', 'dark');
+    btn.textContent = '☀️';
+  } else {
+    localStorage.setItem('theme', 'light');
+    btn.textContent = '🌙';
+  }
+};
+if(localStorage.getItem('theme') === 'dark'){
+  document.body.classList.add('dark-theme');
+  btn.textContent = '☀️';
+}
+
+// 应用保存的语言设置
+const savedLang = localStorage.getItem('preferred-language');
+if (savedLang && savedLang !== 'es') {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.textContent === (savedLang === 'en' ? 'EN' : '中文')) {
+      btn.classList.add('active');
+    }
+  });
+  setLanguage(savedLang);
+}
   </script>
 </body>
 </html>
