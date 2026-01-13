@@ -1,9 +1,9 @@
-// AI News Data - Auto-generated on 2026-01-12 10:56
-// Last updated: 2026-01-12T10:56:30.536796
+// AI News Data - Auto-generated on 2026-01-12 10:32
+// Last updated: 2026-01-12T10:32:27.620022
 // Total articles: 15
 
 const aiNewsData = {
-  "lastUpdated": "2026-01-12T10:56:30.536796",
+  "lastUpdated": "2026-01-12T10:32:27.620022",
   "totalArticles": 15,
   "featuredCount": 2,
   "categories": [
@@ -11,9 +11,9 @@ const aiNewsData = {
     "research"
   ],
   "sources": [
-    "The Next Web",
     "VentureBeat",
     "The Verge",
+    "The Next Web",
     "TechCrunch"
   ],
   "news": [
