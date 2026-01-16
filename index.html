@@ -11,6 +11,116 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cicidas.org">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org 结构化数据标记 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.cicidas.org/#website",
+        "url": "https://www.cicidas.org",
+        "name": "Cicidas - Explorador Digital",
+        "description": "Explorador apasionado por el mundo, enfocado en las cosas pequeñas y hermosas. Desarrollador autodidacta aprendiendo IA.",
+        "inLanguage": ["es", "en", "zh-TW"],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.cicidas.org/?s={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.cicidas.org/#person",
+        "name": "Cicidas",
+        "url": "https://www.cicidas.org",
+        "email": "contacto@cicidas.org",
+        "description": "Un explorador apasionado por el mundo y que se centra en las cosas pequeñas y hermosas. Desarrollador autodidacta aprendiendo IA.",
+        "sameAs": [
+          "https://github.com/duoduodaye"
+        ],
+        "knowsAbout": [
+          "Inteligencia Artificial",
+          "Desarrollo Web",
+          "Python",
+          "Django",
+          "React",
+          "Node.js",
+          "Vue.js"
+        ],
+        "knowsLanguage": [
+          {
+            "@type": "Language",
+            "name": "Español",
+            "alternateName": "es"
+          },
+          {
+            "@type": "Language",
+            "name": "English",
+            "alternateName": "en"
+          },
+          {
+            "@type": "Language",
+            "name": "中文",
+            "alternateName": "zh"
+          }
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "CEPE - UNAM",
+          "location": {
+            "@type": "Place",
+            "name": "Ciudad de México",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "MX"
+            }
+          }
+        },
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Desarrollador Autodidacta",
+          "skills": "Inteligencia Artificial, Desarrollo Web, Python, JavaScript"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.cicidas.org/#webpage",
+        "url": "https://www.cicidas.org",
+        "name": "Mi Sitio Web - Cicidas",
+        "description": "Explorador apasionado por el mundo, enfocado en las cosas pequeñas y hermosas. Desarrollador autodidacta aprendiendo IA.",
+        "inLanguage": ["es", "en", "zh-TW"],
+        "isPartOf": {
+          "@id": "https://www.cicidas.org/#website"
+        },
+        "about": {
+          "@id": "https://www.cicidas.org/#person"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://www.cicidas.org/images/cicidas-cover.jpg"
+        },
+        "datePublished": "2024-01-01",
+        "dateModified": "2026-01-16"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://www.cicidas.org"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 

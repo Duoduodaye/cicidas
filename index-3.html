@@ -224,6 +224,67 @@
       margin-top: 3rem; /* More space above footer */
     }
   </style>
+
+  <!-- Schema.org 结构化数据标记 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.cicidas.org/index-3.html#webpage",
+        "url": "https://www.cicidas.org/index-3.html",
+        "name": "Objetivos Pequeños y Hermosos - Cicidas",
+        "description": "Una plataforma para registrar, visualizar y celebrar cada meta alcanzada, por pequeña que sea.",
+        "inLanguage": ["es", "en", "zh-TW"],
+        "isPartOf": {
+          "@id": "https://www.cicidas.org/#website"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Objetivos Pequeños y Hermosos",
+          "description": "Libros favoritos, sitios favoritos y proyectos creativos"
+        },
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "Proyectos y Recursos Favoritos",
+          "description": "Colección de proyectos creativos, libros y sitios favoritos",
+          "itemListElement": [
+            {
+              "@type": "SoftwareApplication",
+              "name": "Probador Virtual Mexicano",
+              "description": "Experimenta cómo te quedan trajes tradicionales mexicanos y ropa moderna usando tecnología de inteligencia artificial",
+              "applicationCategory": "DesignApplication",
+              "operatingSystem": "Web"
+            }
+          ]
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://www.cicidas.org"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Objetivos Pequeños y Hermosos",
+              "item": "https://www.cicidas.org/index-3.html"
+            }
+          ]
+        },
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-01-16",
+        "author": {
+          "@id": "https://www.cicidas.org/#person"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header>
@@ -238,6 +299,22 @@
     <p>Una plataforma para registrar, visualizar y celebrar cada meta alcanzada, por pequeña que sea.</p>
   </div>
   <main>
+    <section>
+      <h2>🎨 Nuevo: Probador Virtual Mexicano</h2>
+      <div class="project-card" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(206, 17, 38, 0.05), rgba(0, 104, 71, 0.05)); border: 2px solid #006847;">
+        <h3 style="color: #006847; margin-top: 0;">👗 Prueba Moda Mexicana con IA</h3>
+        <p>¡Experimenta cómo te quedan trajes tradicionales mexicanos y ropa moderna usando tecnología de inteligencia artificial! Desde huipiles de Oaxaca hasta guayaberas clásicas.</p>
+        <ul style="list-style-type: none; padding-left: 0; margin: 1rem 0;">
+          <li>✨ Tecnología AI de probador virtual</li>
+          <li>🇲🇽 Colección de ropa tradicional y moderna mexicana</li>
+          <li>📱 Sube tu foto y prueba diferentes estilos</li>
+          <li>💾 Guarda y comparte tus resultados</li>
+          <li>🌍 Disponible en español, inglés y 中文</li>
+        </ul>
+        <a href="virtual-tryon.html" class="project-link" style="background: linear-gradient(135deg, #006847, #008855); color: white; padding: 1rem 2rem; border-radius: 8px; display: inline-block; margin-top: 1rem; text-decoration: none; font-weight: bold;">🚀 Probar Ahora &rarr;</a>
+      </div>
+    </section>
+
     <section>
       <h2>Características principales</h2>
       <ul>
@@ -255,9 +332,9 @@
       </ul>
     </section>
     <section>
-      <h2>Enlace al proyecto</h2>
-      <p>
-        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">Ver proyecto &rarr;</a>
+      <h2>Más proyectos próximamente</h2>
+      <p style="color: var(--morandi1); font-style: italic;">
+        Estamos trabajando en más características interesantes...
       </p>
     </section>
   </main>
