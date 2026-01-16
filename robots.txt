@@ -1,0 +1,23 @@
+# robots.txt for www.cicidas.org
+# Permite que todos los motores de búsqueda accedan al sitio
+
+User-agent: *
+Allow: /
+
+# No permitir acceso a archivos de configuración
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.vscode/
+Disallow: /node_modules/
+
+# Evitar indexar archivos de prueba y versiones antiguas
+Disallow: /*-test.html
+Disallow: /*-simple*.html
+Disallow: /*-enhanced.html
+Disallow: /*-hub.html
+Disallow: /test-*.html
+Disallow: /cicadas-modern-react.html
+Disallow: /financial-dashboard.html
+
+# Sitemap location
+Sitemap: https://www.cicidas.org/sitemap.xml

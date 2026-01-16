@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 主页 -->
+  <url>
+    <loc>https://www.cicidas.org/</loc>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.cicidas.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cicidas.org/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.cicidas.org/" />
+  </url>
+
+  <!-- 数字花园 -->
+  <url>
+    <loc>https://www.cicidas.org/index-1.html</loc>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.cicidas.org/index-1.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cicidas.org/index-1.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.cicidas.org/index-1.html" />
+  </url>
+
+  <!-- 学习进度 -->
+  <url>
+    <loc>https://www.cicidas.org/index-2.html</loc>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.cicidas.org/index-2.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cicidas.org/index-2.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.cicidas.org/index-2.html" />
+  </url>
+
+  <!-- 小而美目标 -->
+  <url>
+    <loc>https://www.cicidas.org/index-3.html</loc>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.cicidas.org/index-3.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cicidas.org/index-3.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.cicidas.org/index-3.html" />
+  </url>
+
+  <!-- AI 新闻 -->
+  <url>
+    <loc>https://www.cicidas.org/ai-news-fixed.html</loc>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.cicidas.org/ai-news-fixed.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cicidas.org/ai-news-fixed.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.cicidas.org/ai-news-fixed.html" />
+  </url>
+
+  <!-- GitHub 教程 -->
+  <url>
+    <loc>https://www.cicidas.org/github-tutorial.html</loc>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.cicidas.org/github-tutorial.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cicidas.org/github-tutorial.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.cicidas.org/github-tutorial.html" />
+  </url>
+
+  <!-- 虚拟试衣 -->
+  <url>
+    <loc>https://www.cicidas.org/virtual-tryon.html</loc>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Dream Breaker 国际化版本 -->
+  <url>
+    <loc>https://www.cicidas.org/dream-breaker-i18n.html</loc>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.cicidas.org/dream-breaker-i18n.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cicidas.org/dream-breaker-i18n.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.cicidas.org/dream-breaker-i18n.html" />
+  </url>
+
+</urlset>
